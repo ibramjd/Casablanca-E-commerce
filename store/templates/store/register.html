@@ -1,0 +1,60 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Register CSS File -->
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+<div class="form-content">
+    <div class="overlay"></div>
+    
+    <!-- Register Form -->
+    <form class="signup-form" action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        <div class="title"><strong>انشاء حساب</strong></div>
+        <div dir="rtl" class="input-boxes">
+            <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="ادخل اسمك" required>
+                {% if form.username.errors %}
+                    <div class="text-danger">
+                        {{ form.username.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password1" placeholder="ادخل كلمة المرور" required>
+                {% if form.password.errors %}
+                    <div class="text-danger">
+                        {{ form.password.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password2" placeholder="اعد ادخال كلمة المرور" required>
+                {% if form.password.errors %}
+                    <div class="text-danger">
+                        {{ form.password.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="button input-box">
+                <input type="submit" value="إنشاء حساب">
+            </div>
+            <div class="text signup-text">لديك حساب؟<a href="{% url 'login' %}">سجل دخولك الآن</a></div>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

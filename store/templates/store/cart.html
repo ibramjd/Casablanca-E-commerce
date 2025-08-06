@@ -1,0 +1,70 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- sub-styles -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/sub-styles.css' %}">
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box-element">
+            <a class="btn btn-outline-dark"
+            href="{% url 'store' %}">&#x2190; متابعة الشراء </a>
+
+            <br>
+            <br>
+
+            <table class="table">
+                <tr>
+                    <th><h5>العناصر: <strong>{{order.get_cart_items}}
+                    </strong></h5></th>
+                    <th><h5>المجموع: <strong>${{order.get_cart_total|floatformat:2}}
+                    </strong></h5></th>
+                    <th>
+                        <a Style="float:right; margin:px"
+                        class="btn btn-success"
+                        href="{% url 'checkout' %}">إتمام عملية الشراء</a>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+
+        <div style="padding: 20px;" class="box-element col-lg-10 mx-auto" dir="rtl">
+            <div style="padding-left: 10px; padding-right: 100px;" class="cart-row">
+                <div Style="flex:1"></div>
+                <div Style="flex:2"><strong>العنصر</strong></div>
+                <div Style="flex:1"><strong>السعر</strong></div>
+                <div Style="flex:1"><strong>الكمية</strong></div>
+                <div Style="flex:1"><strong>المجموع</strong></div>
+                <div Style="flex:1"><strong>حذف</strong></div>
+            </div>
+
+            {% for item in items %}
+            <div  style="padding-left: 10px; padding-right: 100px;" class="cart-row">
+                <div Style="flex:1">
+                    <img class="row-image" src="{{item.product.imageURL}}">
+                </div>
+                <div Style="flex:2">{{item.product.name}}</div>
+                <div Style="flex:1">{{item.product.price|floatformat:2}}</div>
+                <div Style="flex:1">
+                    <p class="quantity">{{item.quantity}}</p>
+                </div>
+                <div Style="flex:1">${{item.get_total|floatformat:2}}</div>
+
+                <!-- Delete Item From Cart -->
+                <div style="flex:1">
+                    <form method="POST" action="{% url 'remove_from_cart' item.id %}">
+                        {% csrf_token %}
+                        <button class="btn btn-danger btn-sm">حذف</button>
+                    </form>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

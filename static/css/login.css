@@ -1,0 +1,106 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0,0,0,0.1);
+    z-index: 1;
+    pointer-events: none;
+}
+.form-content {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+}
+.login-form {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding: 40px 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+
+}
+.login-form .input-boxes {
+    margin-top: 30px;
+}
+.login-form .input-boxes .input-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    margin: 10px 0;
+}
+.login-form .input-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: 400;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+.login-form .input-boxes .button {
+    color: #ffedd8;
+    margin-top: 40px;
+}
+.login-form .input-boxes .button input {
+    color: #fff;
+    background: #240a34;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.login-form .input-boxes .button input:hover {
+    background: #600d38;
+}
+.login-form .input-boxes a {
+    color: #600d38;
+    cursor: pointer;
+}
+.login-form .input-boxes a:hover {
+    color: #240a34;
+    text-decoration: underline;
+    font-weight: 700;
+}
+.login-form .input-boxes .login-text {
+    text-align: center;
+    margin-top: 25px;
+}
+.login-form .title {
+    float: right;
+    position: relative;
+    font-size: 24px;
+    font-weight: 500;
+    color: #240a34;
+    padding-bottom: 20px;
+}
+.login-form .title::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    width: 25px;
+    /* background: #891652; */
+}
+
+i {
+    color: #600d38;
+}
+
+@media (max-width: 500px) {
+    .login-form {
+        max-width: 95vw;
+        padding: 20px 5px;
+    }
+}

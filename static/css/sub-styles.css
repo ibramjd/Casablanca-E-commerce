@@ -1,0 +1,57 @@
+.btn-success {
+    background: #240a34;
+    border: 0;
+}
+
+.btn-success:hover {
+    background: #600d38;
+}
+
+.btn-outline-dark:hover {
+    background-color: #eabe6c;
+    color: #240a34;
+}
+
+.carousel {
+    padding-bottom: 20px !important;
+}
+
+.men-header {
+    text-align: right;
+    color: #240a34;
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+.women-header {
+    text-align: right;
+    color: #240a34;
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+.kids-header {
+    text-align: right;
+    color: #240a34;
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+.col-lg-6 .payment-title {
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.kids-products-row {
+    padding-bottom: 100px;
+}
+
+.checkout-form-field {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#shipping-info {
+    text-align: right;
+}

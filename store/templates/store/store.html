@@ -1,0 +1,137 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- sub-styles -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/sub-styles.css' %}">
+
+<!-- Carousel -->
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/carousel-01.png' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/carousel-02.png' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/carousel-03.png' %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<!-- Men Category -->
+
+<div class="men-header">
+    <h3>القسم الرجالي</h3>
+</div>
+
+<!-- Products -->
+<div class="row men-products-row">
+    {% for product in men_products %}
+      <div class="col-lg-4">
+          <img class="thumbnail" src="{{product.imageURL}}" alt="">
+          <div class="box-element product">
+              <h6><strong>{{product.name}}</strong></h6>
+              <hr>
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                
+                <div style="display: flex; gap: 5px;">
+                  <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-dark add-btn">
+                    أضف للسلة</button>
+                  </form>
+              
+                  <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-success">عرض</a>
+                </div>
+
+                <h4 Style="display:inline-block; float:right; margin: 0;">
+                <small>SDG </small>{{product.price|floatformat:2}}</h4>
+              </div>
+          </div>
+      </div>
+    {% endfor %}
+</div>
+<hr>
+
+
+
+<!-- Women Category -->
+
+<div class="women-header">
+    <h3>القسم النسائي</h3>
+</div>
+
+<!-- Products -->
+<div class="row women-products-row">
+    {% for product in women_products %}
+      <div class="col-lg-4">
+          <img class="thumbnail" src="{{product.imageURL}}" alt="">
+          <div class="box-element product">
+              <h6><strong>{{product.name}}</strong></h6>
+              <hr>
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                
+                <div style="display: flex; gap: 5px;">
+                  <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-dark add-btn">
+                    أضف للسلة</button>
+                  </form>
+              
+                  <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-success">عرض</a>
+                </div>
+
+                <h4 Style="display:inline-block; float:right; margin: 0;">
+                <small>SDG </small>{{product.price|floatformat:2}}</h4>
+              </div>
+          </div>
+      </div>
+    {% endfor %}
+</div>
+<hr>
+
+<!-- Kids Category -->
+<div class="kids-header">
+    <h3>قسم الأطفال</h3>
+</div>
+
+<!-- Products -->
+<div class="row kids-products-row">
+    {% for product in kids_products %}
+      <div class="col-lg-4">
+          <img class="thumbnail" src="{{product.imageURL}}" alt="">
+          <div class="box-element product">
+              <h6><strong>{{product.name}}</strong></h6>
+              <hr>
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                
+                <div style="display: flex; gap: 5px;">
+                  <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-dark add-btn">
+                    أضف للسلة</button>
+                  </form>
+              
+                  <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-success">عرض</a>
+                </div>
+
+                <h4 Style="display:inline-block; float:right; margin: 0;">
+                <small>SDG </small>{{product.price|floatformat:2}}</h4>
+              </div>
+          </div>
+      </div>
+    {% endfor %}
+</div>
+
+
+{% endblock content %}

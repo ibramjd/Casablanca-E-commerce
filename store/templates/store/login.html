@@ -1,0 +1,44 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Login Style -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
+<!-- Form Container -->
+ <div class="form-content">
+    <div class="overlay"></div>
+
+    <!-- Login Form -->
+    <form class="login-form" action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="title"><strong>تسجيل دخول</strong></div>
+        <div dir='rtl' class="input-boxes">
+            <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" name="username" placeholder="ادخل اسم المستخدم " required>
+            </div>
+            <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="ادخل كلمة المرور" required>
+            </div>
+            <div class="text"><a href="#">هل نسيت كلمة المرور؟</a></div>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info alert-warning text-center">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="button input-box">
+                <input type="submit" value="تسجيل دخول">
+            </div>
+            <div class="text login-text">ليس لديك حساب؟<a href="{% url 'register' %}">سجل معنا الآن</a></div>
+        </div>
+    </form>
+
+</div>
+
+{% endblock content %}
