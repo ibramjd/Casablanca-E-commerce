@@ -32,7 +32,7 @@
         <br>
 
         <div style="padding: 20px;" class="box-element col-lg-10 mx-auto" dir="rtl">
-            <div style="padding-left: 10px; padding-right: 100px;" class="cart-row">
+            <div style="padding-left: 10px; padding-right: 100px;" class="cart-row cart-style">
                 <div Style="flex:1"></div>
                 <div Style="flex:2"><strong>العنصر</strong></div>
                 <div Style="flex:1"><strong>السعر</strong></div>
@@ -42,7 +42,7 @@
             </div>
 
             {% for item in items %}
-            <div  style="padding-left: 10px; padding-right: 100px;" class="cart-row">
+            <div  style="padding-left: 10px; padding-right: 100px;" class="cart-row cart-style">
                 <div Style="flex:1">
                     <img class="row-image" src="{{item.product.imageURL}}">
                 </div>
