@@ -11,9 +11,7 @@
             <form method="POST" id="form" action="{% url 'checkout' %}">
                 {% csrf_token %}
                 <div id="shipping-info">
-                    <hr>
-                    <h5>معلومات التوصيل</h5>
-                    <hr>
+                    <h5 style="padding-bottom:20px; font-weight:700;">معلومات التوصيل</h5>
                     <div class="form-field checkout-form-field">
                         <input required class="form-control"
                         type="text" name="phone_number" placeholder="رقم الهاتف..">
@@ -36,7 +34,6 @@
                     </div>
                 </div>
 
-                <hr>
                 <input id="form-button" class="btn btn-success
                 btn-block" type="submit" value="متابعة عملية الشراء">
             </form>

@@ -8,7 +8,9 @@ import secrets
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=200, null=True)
-    email = models.EmailField(max_length=200, null=True)
+    email = models.EmailField(max_length=254, null=True, blank=True)
+    phone_number = models.CharField(max_length=15, null=True, blank=True)
+
 
     def __str__(self):
         return self.name
@@ -22,7 +24,8 @@ class Product(models.Model):
     )
 
     name = models.CharField(max_length=200, null=True)
-    price = models.FloatField()
+    description = models.TextField(null=True, blank=True)
+    price = models.DecimalField(decimal_places=3, max_digits=10, default=0)
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='men')
     image = models.ImageField(null=True, blank=True)
 

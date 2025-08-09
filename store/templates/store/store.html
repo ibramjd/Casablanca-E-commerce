@@ -28,110 +28,131 @@
   </a>
 </div>
 
+<!-- Products Filter -->
+<form method="get" 
+      class="mb-8 category-form text-center" 
+      style="max-width: 1200px; margin: auto;">
+  <div class="row justify-content-center">
+    <div class="col-md-2 mb-4">
+      <select name="category" class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example">
+        <option value="">كل الأقسام</option>
+        <option value="men">رجالي</option>
+        <option value="women">نسائي</option>
+        <option value="kids">أطفالي</option>
+      </select>
+    </div>
+    <div class="col-md-2 mb-4">
+      <select name="price" class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example">
+        <option value="">كل الأسعار</option>
+        <option value="low">أقل من 10 ألف</option>
+        <option value="mid">10 - 25 ألف</option>
+        <option value="high">أكثر من 25 ألف</option>
+      </select>
+    </div>
+    <div class="col-md-2 mb-4">
+      <button type="submit" class="btn btn-warning w-100" style="font-weight: 700;">بحث</button>
+    </div>
+  </div>
+</form>
+
+
 <!-- Men Category -->
-
-<div class="men-header">
+{% if men_products %}
+  <div class="men-header">
     <h3>القسم الرجالي</h3>
-</div>
-
-<!-- Products -->
-<div class="row men-products-row">
-    {% for product in men_products %}
-      <div class="col-lg-4">
-          <img class="thumbnail" src="{{product.imageURL}}" alt="">
-          <div class="box-element product">
-              <h6><strong>{{product.name}}</strong></h6>
-              <hr>
-              <div style="display: flex; align-items: center; justify-content: space-between;">
-                
-                <div style="display: flex; gap: 5px;">
-                  <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                    {% csrf_token %}
-                    <button class="btn btn-outline-dark add-btn">
-                    أضف للسلة</button>
-                  </form>
-              
-                  <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-success">عرض</a>
+  </div>
+  <div class="row men-products-row">
+      {% for product in men_products %}
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{product.imageURL}}" alt="">
+            <div class="box-element product">
+                <h6 class="product-name text-right"><strong>{{product.name}}</strong></h6>
+                <div>
+                  <p class="product-description">{{product.description}}</p>
                 </div>
-
-                <h4 Style="display:inline-block; float:right; margin: 0;">
-                <small>SDG </small>{{product.price|floatformat:2}}</h4>
-              </div>
-          </div>
-      </div>
-    {% endfor %}
-</div>
+                <hr>
+                <div class="product-footer">
+                  <h4 class="price-text">{{product.price}}<small> جنيه</small></h4>
+                  <div class="product-buttons">
+                    <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                      {% csrf_token %}
+                      <button class="btn btn-success w-100">أضف للسلة</button>
+                    </form>
+                    <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-outline-dark add-btn w-100">عرض</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+  </div>
+{% endif %}
 <hr>
 
 
 
 <!-- Women Category -->
-
-<div class="women-header">
-    <h3>القسم النسائي</h3>
-</div>
-
-<!-- Products -->
-<div class="row women-products-row">
-    {% for product in women_products %}
-      <div class="col-lg-4">
-          <img class="thumbnail" src="{{product.imageURL}}" alt="">
-          <div class="box-element product">
-              <h6><strong>{{product.name}}</strong></h6>
-              <hr>
-              <div style="display: flex; align-items: center; justify-content: space-between;">
-                
-                <div style="display: flex; gap: 5px;">
-                  <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                    {% csrf_token %}
-                    <button class="btn btn-outline-dark add-btn">
-                    أضف للسلة</button>
-                  </form>
-              
-                  <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-success">عرض</a>
+{% if women_products %}
+ <div class="women-header text-right">
+      <h3>القسم النسائي</h3>
+  </div>
+  <div class="row women-products-row">
+      {% for product in women_products %}
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{product.imageURL}}" alt="">
+            <div class="box-element product">
+                <h6 class="product-name text-right"><strong>{{product.name}}</strong></h6>
+                <div>
+                  <p class="product-description">{{product.description}}</p>
                 </div>
-
-                <h4 Style="display:inline-block; float:right; margin: 0;">
-                <small>SDG </small>{{product.price|floatformat:2}}</h4>
-              </div>
-          </div>
-      </div>
-    {% endfor %}
-</div>
+                <hr>
+                <div class="product-footer">
+                  <h4 class="price-text">{{product.price}}<small> جنيه</small></h4>
+                  <div class="product-buttons">
+                    <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                      {% csrf_token %}
+                      <button class="btn btn-success w-100">أضف للسلة</button>
+                    </form>
+                    <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-outline-dark add-btn w-100">عرض</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+  </div>
+{% endif %}
 <hr>
 
 <!-- Kids Category -->
-<div class="kids-header">
-    <h3>قسم الأطفال</h3>
-</div>
 
-<!-- Products -->
-<div class="row kids-products-row">
-    {% for product in kids_products %}
-      <div class="col-lg-4">
-          <img class="thumbnail" src="{{product.imageURL}}" alt="">
-          <div class="box-element product">
-              <h6><strong>{{product.name}}</strong></h6>
-              <hr>
-              <div style="display: flex; align-items: center; justify-content: space-between;">
-                
-                <div style="display: flex; gap: 5px;">
-                  <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                    {% csrf_token %}
-                    <button class="btn btn-outline-dark add-btn">
-                    أضف للسلة</button>
-                  </form>
-              
-                  <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-success">عرض</a>
+{% if kids_products %}
+ <div class="kids-header">
+      <h3>قسم الأطفال</h3>
+  </div>
+  <div class="row kids-products-row">
+      {% for product in kids_products %}
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{product.imageURL}}" alt="">
+            <div class="box-element product">
+                <h6 class="product-name text-right"><strong>{{product.name}}</strong></h6>
+                <div>
+                  <p class="product-description">{{product.description}}</p>
                 </div>
-
-                <h4 Style="display:inline-block; float:right; margin: 0;">
-                <small>SDG </small>{{product.price|floatformat:2}}</h4>
-              </div>
-          </div>
-      </div>
-    {% endfor %}
-</div>
+                <hr>
+                <div class="product-footer">
+                  <h4 class="price-text">{{product.price}}<small> جنيه</small></h4>
+                  <div class="product-buttons">
+                    <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                      {% csrf_token %}
+                      <button class="btn btn-success w-100">أضف للسلة</button>
+                    </form>
+                    <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-outline-dark add-btn w-100">عرض</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+  </div>
+{% endif %}
 
 
 {% endblock content %}

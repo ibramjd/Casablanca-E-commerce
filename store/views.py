@@ -4,16 +4,35 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+from .forms import CustomUserCreationForm
 from django.http import JsonResponse
 import json
 
 from .models import *
-# Create your views here.
 
 def store_view(request):
+    category = request.GET.get('category')
+    price = request.GET.get('price')
+
+    products = Product.objects.all()
+    if category:
+        products = products.filter(category=category)
+    if price:
+        if price == 'low':
+            products = products.filter(price__lt=10.000)
+        elif price == 'mid':
+            products = products.filter(price__gte=10.000, price__lt=25.000)
+        elif price == 'high':
+            products = products.filter(price__gte=25.000)
+
+    # Clothes Categories
+    men_products = products.filter(category='men')
+    women_products = products.filter(category='women')
+    kids_products = products.filter(category='kids')
+
     if request.user.is_authenticated:
         customer, created = Customer.objects.get_or_create(
-            user=request.user,
+            user = request.user,
             defaults={'name': request.user.username,}
         )
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
@@ -25,14 +44,7 @@ def store_view(request):
             'get_cart_total': 0,
             'shipping': False,
         }
-        
-    # Clothes Categories
 
-    men_products = Product.objects.filter(category='men')
-    women_products = Product.objects.filter(category='women')
-    kids_products = Product.objects.filter(category='kids')
-
-    products = Product.objects.all()
     context = {
         'men_products':men_products,
         'women_products':women_products,
@@ -91,7 +103,7 @@ def remove_from_cart(request, item_id):
             item.delete()
     return redirect('cart')
 
-
+@login_required(login_url='login')
 def checkout_view(request):
     if request.method == 'POST':
         address = request.POST.get('address')
@@ -167,29 +179,30 @@ def login_view(request):
 
 def register_view(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            # Creating a Customer Object linked to the User
-            Customer.objects.get_or_create(
-                user=user,
-                defaults={
-                    'name': user.username,
-                    # 'email': user.email,
-                }
-            )
+            user = form.save(commit=False)
+            user.save()
+            email = form.cleaned_data.get('email')
+            phone_number = form.cleaned_data.get('phone_number')
+            customer, created = Customer.objects.get_or_create(user=user)
+            customer.name = user.username
+            customer.email = email
+            customer.phone_number = phone_number
+            customer.save()
+                
             messages.success(request, "تم إنشاء الحساب بنجاح, الرجاء تسجيل الدخول.")
             return redirect('login')
         else:
             messages.error(request, 'فشل في التسجيل, قد يكون الإسم غير صالح أ, كلمة المرور ضعيفة.')
             return redirect('register')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'store/register.html', {'form': form})
 
 
 #  Payment Function
-
+@login_required(login_url='login')
 def payment_view(request):
     if request.method == 'POST':
         transaction_id = request.POST.get('transaction_id')

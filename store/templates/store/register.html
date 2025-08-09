@@ -24,6 +24,24 @@
                 {% endif %}
             </div>
             <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="ادخل بريدك الإلكتروني" required>
+                {% if form.email.errors %}
+                    <div class="text-danger">
+                        {{ form.email.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="input-box">
+                <i class="fas fa-phone"></i>
+                <input type="text" name="phone_number" placeholder="رقم الهاتف" required>
+                {% if form.phone_number.errors %}
+                    <div class="text-danger">
+                        {{ form.phone_number.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="input-box">
                 <i class="fas fa-lock"></i>
                 <input type="password" name="password1" placeholder="ادخل كلمة المرور" required>
                 {% if form.password.errors %}

@@ -1,40 +1,114 @@
 .btn-success {
-    background: #240a34;
+    background: #891652;
     border: 0;
 }
 
 .btn-success:hover {
-    background: #600d38;
+    background: #240a34;
 }
 
 .btn-outline-dark:hover {
-    background-color: #eabe6c;
-    color: #240a34;
+    background-color: #240a34;
+    color: #fff;
 }
 
 .carousel {
-    padding-bottom: 20px !important;
+    padding-bottom: 50px !important;
 }
 
-.men-header {
+.men-header h3,
+.women-header h3,
+.kids-header h3 {
     text-align: right;
     color: #240a34;
-    padding-top: 100px;
+    padding-top: 80px;
     padding-bottom: 20px;
+    font-weight: 700;
 }
 
-.women-header {
-    text-align: right;
-    color: #240a34;
-    padding-top: 100px;
-    padding-bottom: 20px;
+.men-products-row,
+.women-products-row,
+.kids-products-row {
+    justify-content: center;
+    margin: 0 auto;
 }
 
-.kids-header {
+.men-products-row .col-lg-4,
+.women-products-row .col-lg-4,
+.kids-products-row .col-lg-4 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+    padding: 15px;
+}
+
+.box-element {
+    background: #fff;
+    padding: 20px;
     text-align: right;
+}
+
+.product-name {
+    text-align: right;
+    font-size: 20px;
     color: #240a34;
-    padding-top: 100px;
-    padding-bottom: 20px;
+    font-weight: 500;
+    padding-top: 5px;
+}
+
+.product-description {
+    text-align: right;
+    font-size: 14px;
+    color: #666;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    max-height: 60px;
+    min-height: 60px;
+    overflow: hidden;
+}
+
+.price-text {
+    margin: 0;
+    padding-bottom: 15px;
+    direction: rtl;
+    font-weight: 700;
+    font-size: 27px;
+    color: #240a34;
+}
+
+.category-form {
+    direction: rtl;
+    padding-top: 40px;
+    padding-right: 40px;
+    margin-right: 50%;
+    background: #891652;
+}
+
+.product-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.product-buttons form {
+    flex: 2;
+}
+
+.product-buttons a {
+    flex: 1;
+}
+
+.form-select {
+    font-size: 16px;
+    font-weight: 700;
+    background: none;
+    color: #eabe6c;
+    border: 1px solid #fff;
+    border-radius: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('/static/images/arrow-down.svg') no-repeat left 10px center;
+    background-size: 16px;
+
 }
 
 .col-lg-6 .payment-title {
@@ -54,12 +128,4 @@
 
 #shipping-info {
     text-align: right;
-}
-
-.cart-style {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #ececec;
-    padding: 10px 0;
-    flex-wrap: wrap;
 }
