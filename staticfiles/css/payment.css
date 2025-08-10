@@ -1,0 +1,149 @@
+/* ========== الحاوية الرئيسية ========== */
+.form-content {
+    min-height: 60vh;
+    align-items: flex-start;
+    padding-top: 70px;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px 10px;
+}
+
+/* كل عنصر (الفورم أو الصورة) */
+.form-content .item {
+    max-width: 480px;
+    flex: 1 1 45%;
+}
+
+/* ========== صندوق الفورم والصورة ========== */
+.payment-form,
+.payment-image {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(15, 252, 190, 0.1);
+    border-radius: 16px;
+    padding: 35px 30px 40px 30px;
+    color: #fff;
+    text-align: right;
+    direction: rtl;
+    min-height: 540px;
+    width: 100%;
+}
+
+/* الصورة داخل الصندوق */
+.payment-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* ========== عنوان الفورم ========== */
+.payment-form .title {
+    text-align: right !important;
+    font-size: 28px;
+    font-weight: 700;
+    color: #0FFCBE;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+.payment-form .title::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    height: 4px;
+    background: #0FFCBE;
+    border-radius: 3px;
+}
+
+/* ========== بيانات الحساب (نص فقط) ========== */
+.account-info {
+    padding: 5px 5px;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 20px;
+}
+.account-info strong {
+    color: #0FFCBE;
+}
+
+/* ========== الحقول مع الأيقونات ========== */
+.input-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.input-box i {
+    position: absolute;
+    right: 12px;
+    font-size: 20px;
+    color: #0FFCBE;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+.input-box input {
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    font-size: 17px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-sizing: border-box;
+}
+.input-box input::placeholder {
+    color: #a0fff5;
+    font-weight: 300;
+}
+.input-box input:focus {
+    background: rgba(15, 252, 190, 0.15);
+    border-color: #0FFCBE;
+    color: #e0f7f4;
+}
+.input-box input:focus + i {
+    color: #00d6b9;
+}
+
+/* ========== زر الإرسال ========== */
+.button input {
+    background: #0FFCBE;
+    border-radius: 10px;
+    border: none;
+    color: #334f65;
+    font-weight: 600;
+    font-size: 19px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.button input:hover {
+    background: #fff;
+    color: #106EBE;
+}
+
+/* زر الرجوع */
+.btn-outline-dark {
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.btn-outline-dark:hover {
+    background-color: #fff;
+    color: #106EBE;
+    border: 1px solid #106EBE;
+}
