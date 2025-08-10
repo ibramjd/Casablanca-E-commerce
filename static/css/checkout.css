@@ -1,0 +1,106 @@
+.btn-success {
+    background: #0FFCBE;
+    border-radius: 6px;
+    border: none;
+    color: #334f65;
+    font-weight: 600;
+    margin-top: 30px;
+}
+.btn-success:hover {
+    background: #fff;
+    color: #106EBE;
+}
+.btn-outline-dark {
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 600;
+}
+.btn-outline-dark:hover {
+    background-color: #fff;
+    color: #106EBE;
+    border: none;
+}
+.box-element {
+    background: none!important;
+    text-align: right;
+    flex: 0 0 0 50%;
+    max-width: 100%;
+    padding: 15px;
+    color: #fff!important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+}
+
+.checkout-form-field {
+    display: block;
+    width: 100%;
+    margin-bottom: -5px;
+    margin-top: 5px;
+    padding-right: 30px;
+}
+
+#shipping-info {
+    text-align: right;
+}
+
+#shipping-info h5 {
+    padding: 15px 0;
+    font-weight: 700;
+    color: #fff;
+}
+
+#shipping-info input {
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+#shipping-info input:focus {
+    background: rgba(15, 252, 190, 0.1);
+}
+
+#shipping-info input::placeholder {
+    color: #fff;
+    font-weight: 300;
+}
+#shipping-info hr {
+    background-color: #fff;
+    border-radius: 6px;
+    margin: 2px auto;
+    opacity: 0.5;
+}
+.input-icon {
+    position: relative;
+}
+.input-icon i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0FFCBE;
+    pointer-events: none;
+    font-size: 18px;
+}
+.input-icon input {
+    padding-right: 35px;
+    padding-left: 10px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: none;
+    border: none;
+    border-right: 10px solid #0FFCBE;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}

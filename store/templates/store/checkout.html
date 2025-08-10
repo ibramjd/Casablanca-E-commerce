@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
 
-<!-- sub-styles -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/sub-styles.css' %}">
+<!-- checkout style -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/checkout.css' %}">
 
 <div class="row">
     <div class="col-lg-6 mx-auto" dir="rtl">
@@ -11,27 +11,33 @@
             <form method="POST" id="form" action="{% url 'checkout' %}">
                 {% csrf_token %}
                 <div id="shipping-info">
-                    <h5 style="padding-bottom:20px; font-weight:700;">معلومات التوصيل</h5>
-                    <div class="form-field checkout-form-field">
-                        <input required class="form-control"
-                        type="text" name="phone_number" placeholder="رقم الهاتف..">
+                    <h5>معلومات التوصيل</h5>
+                    <div class="form-field checkout-form-field input-icon">
+                        <i class="fa fa-phone"></i>
+                        <input required class="form-control" type="text" name="phone_number" placeholder="رقم الهاتف..">
                     </div>
-                    <div class="form-field checkout-form-field">
-                        <input required class="form-control"
-                        type="text" name="state" placeholder="الولاية">
+                    <hr>
+                    <div class="form-field checkout-form-field input-icon">
+                        <i class="fa fa-map-marker-alt"></i>
+                        <input required class="form-control" type="text" name="state" placeholder="الولاية">
                     </div> 
-                    <div class="form-field checkout-form-field">
-                        <input required class="form-control"
-                        type="text" name="city" placeholder="المدينة">
+                    <hr>
+                    <div class="form-field checkout-form-field input-icon">
+                        <i class="fa fa-map-marker-alt"></i>
+                        <input required class="form-control" type="text" name="city" placeholder="المدينة">
                     </div>
-                    <div class="form-field checkout-form-field">
-                        <input required class="form-control"
-                        type="text" name="street" placeholder="اسم شارع المنزل">
+                    <hr>
+                    <div class="form-field checkout-form-field input-icon">
+                        <i class="fa fa-road"></i>
+                        <input required class="form-control" type="text" name="street" placeholder="اسم شارع المنزل">
                     </div>
-                    <div class="form-field checkout-form-field">
-                        <input required class="form-control"
-                        type="text" name="address" placeholder="العنوان">
+                    <hr>
+                    <div class="form-field checkout-form-field input-icon">
+                        <i class="fa fa-home"></i>
+                        <input required class="form-control" type="text" name="address" placeholder="العنوان">
                     </div>
+                    <hr>
+
                 </div>
 
                 <input id="form-button" class="btn btn-success

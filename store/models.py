@@ -22,11 +22,35 @@ class Product(models.Model):
         ('women', 'نسائي'),
         ('kids', 'أطفالي'),
     )
+    CLOTHE_CATEGORY_CHOICES = (
+        ('t-shirt', 'تي شيرتات'),
+        ('shirts', 'قمصان'),
+        ('pants', 'بناطلين'),
+        ('jackets', 'جاكيتات'),
+        ('suits', 'بدلات'),
+        ('sportswear', 'ملابس رياضية'),
+        ('jeans', 'جينز'),
+        ('hoodies', 'هوديز'),
+        ('dresses', 'فساتين'),
+        ('blouses', 'بلوزات'),
+        ('abayas', 'عبايات'),
+        ('pajamas', 'بيجامات'),
+        ('bags', 'حقائب'),
+        ('sneakers', 'أحذية رياضية'),
+        ('formal-shoes', 'أحذية رسمية'),
+        ('boots', 'بوتات'),
+        ('slippers', 'شباشب'),
+        ('caps', 'كابات'),
+        ('hats', 'قبعات'),
+        ('sunglasses', 'نظارات شمسية'),
+        ('watches', 'ساعات'),
+)
 
     name = models.CharField(max_length=200, null=True)
     description = models.TextField(null=True, blank=True)
     price = models.DecimalField(decimal_places=3, max_digits=10, default=0)
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='men')
+    type_of_clothe = models.CharField(max_length=20, choices=CLOTHE_CATEGORY_CHOICES, default='t-shirt')
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):

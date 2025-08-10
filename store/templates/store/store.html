@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
 
-<!-- sub-styles -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/sub-styles.css' %}">
+<!-- store style -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/store.css' %}">
 
 <!-- Carousel -->
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -29,9 +29,7 @@
 </div>
 
 <!-- Products Filter -->
-<form method="get" 
-      class="mb-8 category-form text-center" 
-      style="max-width: 1200px; margin: auto;">
+<form method="get" class="mb-8 category-form text-center" style="max-width: 1200px; margin: auto;">
   <div class="row justify-content-center">
     <div class="col-md-2 mb-4">
       <select name="category" class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example">
@@ -39,6 +37,32 @@
         <option value="men">رجالي</option>
         <option value="women">نسائي</option>
         <option value="kids">أطفالي</option>
+      </select>
+    </div>
+    <div class="col-md-2 mb-4">
+      <select name="type_of_clothe" class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example">
+        <option value="">كل المنتجات</option>
+        <option value="t-shirt">تي شيرتات</option>
+        <option value="shirts">قمصان</option>
+        <option value="pants">بناطلين</option>
+        <option value="jackets">جاكيتات</option>
+        <option value="suits">بدلات</option>
+        <option value="sportswear">ملابس رياضية</option>
+        <option value="dresses">فساتين</option>
+        <option value="blouses">بلوزات</option>
+        <option value="jeans">جينز</option>
+        <option value="hoodies">هوديز</option>
+        <option value="abayas">عبايات</option>
+        <option value="pajamas">بيجامات</option>
+        <option value="bags">حقائب</option>
+        <option value="sneakers">أحذية رياضية</option>
+        <option value="formal-shoes">أحذية رسمية</option>
+        <option value="boots">بوتات</option>
+        <option value="slippers">شباشب</option>
+        <option value="caps">كابات</option>
+        <option value="hats">قبعات</option>
+        <option value="sunglasses">نظارات شمسية</option>
+        <option value="watches">ساعات</option>
       </select>
     </div>
     <div class="col-md-2 mb-4">
@@ -56,14 +80,10 @@
 </form>
 
 
-<!-- Men Category -->
-{% if men_products %}
-  <div class="men-header">
-    <h3>القسم الرجالي</h3>
-  </div>
-  <div class="row men-products-row">
-      {% for product in men_products %}
-        <div class="col-lg-4">
+<!-- Products -->
+  <div class="row products-row">
+      {% for product in products %}
+        <div class="product-card col-lg-4">
             <img class="thumbnail" src="{{product.imageURL}}" alt="">
             <div class="box-element product">
                 <h6 class="product-name text-right"><strong>{{product.name}}</strong></h6>
@@ -78,81 +98,12 @@
                       {% csrf_token %}
                       <button class="btn btn-success w-100">أضف للسلة</button>
                     </form>
-                    <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-outline-dark add-btn w-100">عرض</a>
+                    <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-outline-dark  add-btn w-100">عرض</a>
                   </div>
                 </div>
             </div>
         </div>
       {% endfor %}
   </div>
-{% endif %}
-<hr>
-
-
-
-<!-- Women Category -->
-{% if women_products %}
- <div class="women-header text-right">
-      <h3>القسم النسائي</h3>
-  </div>
-  <div class="row women-products-row">
-      {% for product in women_products %}
-        <div class="col-lg-4">
-            <img class="thumbnail" src="{{product.imageURL}}" alt="">
-            <div class="box-element product">
-                <h6 class="product-name text-right"><strong>{{product.name}}</strong></h6>
-                <div>
-                  <p class="product-description">{{product.description}}</p>
-                </div>
-                <hr>
-                <div class="product-footer">
-                  <h4 class="price-text">{{product.price}}<small> جنيه</small></h4>
-                  <div class="product-buttons">
-                    <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                      {% csrf_token %}
-                      <button class="btn btn-success w-100">أضف للسلة</button>
-                    </form>
-                    <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-outline-dark add-btn w-100">عرض</a>
-                  </div>
-                </div>
-            </div>
-        </div>
-      {% endfor %}
-  </div>
-{% endif %}
-<hr>
-
-<!-- Kids Category -->
-
-{% if kids_products %}
- <div class="kids-header">
-      <h3>قسم الأطفال</h3>
-  </div>
-  <div class="row kids-products-row">
-      {% for product in kids_products %}
-        <div class="col-lg-4">
-            <img class="thumbnail" src="{{product.imageURL}}" alt="">
-            <div class="box-element product">
-                <h6 class="product-name text-right"><strong>{{product.name}}</strong></h6>
-                <div>
-                  <p class="product-description">{{product.description}}</p>
-                </div>
-                <hr>
-                <div class="product-footer">
-                  <h4 class="price-text">{{product.price}}<small> جنيه</small></h4>
-                  <div class="product-buttons">
-                    <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                      {% csrf_token %}
-                      <button class="btn btn-success w-100">أضف للسلة</button>
-                    </form>
-                    <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-outline-dark add-btn w-100">عرض</a>
-                  </div>
-                </div>
-            </div>
-        </div>
-      {% endfor %}
-  </div>
-{% endif %}
-
 
 {% endblock content %}

@@ -5,18 +5,20 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .forms import CustomUserCreationForm
-from django.http import JsonResponse
-import json
 
 from .models import *
 
 def store_view(request):
     category = request.GET.get('category')
+    type_of_clothe = request.GET.get('type_of_clothe')
     price = request.GET.get('price')
 
     products = Product.objects.all()
+
     if category:
         products = products.filter(category=category)
+    if type_of_clothe:
+        products = products.filter(type_of_clothe=type_of_clothe)
     if price:
         if price == 'low':
             products = products.filter(price__lt=10.000)
@@ -24,11 +26,6 @@ def store_view(request):
             products = products.filter(price__gte=10.000, price__lt=25.000)
         elif price == 'high':
             products = products.filter(price__gte=25.000)
-
-    # Clothes Categories
-    men_products = products.filter(category='men')
-    women_products = products.filter(category='women')
-    kids_products = products.filter(category='kids')
 
     if request.user.is_authenticated:
         customer, created = Customer.objects.get_or_create(
@@ -46,11 +43,12 @@ def store_view(request):
         }
 
     context = {
-        'men_products':men_products,
-        'women_products':women_products,
-        'kids_products' :kids_products,
+        'products': products,
         'items':items,
         'order':order,
+        'category': category,
+        'type_of_clothe': type_of_clothe,
+        'price': price,
         }
     return render(request, 'store/store.html', context)
 
@@ -129,38 +127,6 @@ def checkout_view(request):
 
     return render(request, 'store/checkout.html')
 
-def updateItem_view(request):
-    data = json.loads(request.body)
-    productId = data['productId']
-    action = data['action']
-
-    print('Action:', action)
-    print('productId:', productId)
-
-    try:
-        customer = request.user.customer
-    except Customer.DoesNotExist:
-        customer = Customer.objects.create(
-        user = request.user,
-        name = request.user.username,
-        )
-    product = Product.objects.get(id=productId)
-    order, created = Order.objects.get_or_create(customer=customer,
-        complete=False)
-    
-    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
-
-    if action == 'add':
-        orderItem.quantity = (orderItem.quantity + 1)
-    elif action == 'remove':
-        orderItem.quantity = (orderItem.quantity - 1)
-
-    orderItem.save()
-
-    if orderItem.quantity <= 0:
-        orderItem.delete()
-    return JsonResponse('Item was added', safe=False)
-
 # Auth Functions
 
 def login_view(request):
@@ -229,3 +195,49 @@ def waiting_confirmation(request):
     customer = request.user.customer
     payment = Payment.objects.filter(customer=customer).order_by('-date_paid').first()
     return render(request, 'store/waiting_confirmation.html', {'payment': payment})
+
+@login_required(login_url='login')
+def purchase_history_view(request):
+    customer = request.user.customer
+    orders = Order.objects.filter(customer=customer, complete=True).order_by('-date_ordered')
+    payments = Payment.objects.filter(order__in=orders)
+
+    context = {
+        'customer': customer,
+        'orders': orders,
+        'payments': payments,
+    }
+    return render(request, 'store/purchase_history.html', context)
+
+
+# def updateItem_view(request):
+#     data = json.loads(request.body)
+#     productId = data['productId']
+#     action = data['action']
+
+#     print('Action:', action)
+#     print('productId:', productId)
+
+#     try:
+#         customer = request.user.customer
+#     except Customer.DoesNotExist:
+#         customer = Customer.objects.create(
+#         user = request.user,
+#         name = request.user.username,
+#         )
+#     product = Product.objects.get(id=productId)
+#     order, created = Order.objects.get_or_create(customer=customer,
+#         complete=False)
+    
+#     orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+
+#     if action == 'add':
+#         orderItem.quantity = (orderItem.quantity + 1)
+#     elif action == 'remove':
+#         orderItem.quantity = (orderItem.quantity - 1)
+
+#     orderItem.save()
+
+#     if orderItem.quantity <= 0:
+#         orderItem.delete()
+#     return JsonResponse('Item was added', safe=False)

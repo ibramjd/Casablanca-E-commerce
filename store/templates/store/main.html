@@ -5,7 +5,11 @@
 	<title>Casablanca</title>
 
 	<meta name="viewport" content="width=device-width,
-    initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    initial-scale=1, maximum-scale=1, minimum-scale=1"/>
+
+	<!-- fav-icon -->
+	<link rel="icon" sizes="32x32" href="{% static 'images/favicon-32.png' %}" type="image/png">
+	<link rel="icon" sizes="16x16" href="{% static 'images/favicon-16.png' %}" type="image/png">
 
     <!-- Bootstrap Style -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -49,6 +53,9 @@
 					<a class="nav-link" href="{% url 'cart' %}">سلة المشتريات</a>
 				</li>
 				<li class="nav-item active">
+					<a class="nav-link" href="{% url 'purchase_history' %}">سجل الشراء</a>
+				</li>
+				<li class="nav-item active">
 					<a class="nav-link" href="{% url 'register' %}">إنشاء حساب</a>
 				</li>
 			</ul>
@@ -76,8 +83,34 @@
             {% endblock content %}
          </div>
 
-    <!-- Bootstrap JS -->
-     
+		 <!-- Footer -->
+		<footer class="text-center text-white">
+			<div class="container" style="padding-top: 40px; padding-bottom: 14px;">
+				<!-- Section: Social media -->
+				<section class="btn-floating mb-2">
+	
+				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+					<i class="fas fa-envelope"></i></a>
+				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+					<i class="fab fa-instagram"></i></a>
+				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+					<i class="fab fa-facebook-f"></i></a>
+				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+					<i class="fab fa-linkedin-in"></i></a>
+				<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+					<i class="fab fa-whatsapp"></i></a>
+				</section>
+			</div>
+
+			<!-- Copyright -->
+			<hr style="background-color: #fff; width: 100px; height: 2px; border-radius: 6px; margin: auto;">
+			<div class="text-center" style="padding-bottom: 40px; padding-top: 14px;">
+				جميع الحقوق محفوظة &copy;  2025 | كازابلانكا
+			</div>
+		</footer>	
+
+
+    <!-- Bootstrap JS -->  
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
@@ -89,9 +122,6 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-
-	<!-- Cart JS -->
-	<!-- <script type="text/javascript" src="{% static 'js/cart.js' %}"></script> -->
 	
 	<!-- Fancybox JS -->
 	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>

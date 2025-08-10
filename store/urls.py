@@ -9,9 +9,9 @@ urlpatterns = [
     path('cart/remove/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('cart/checkout/', views.checkout_view, name='checkout'),
     path('cart/checkout/payment/', views.payment_view, name='payment'),
-    path('waiting-confirmation/', views.waiting_confirmation, name='waiting_confirmation'),
+    path('cart/checkout/payment/waiting-confirmation/', views.waiting_confirmation, name='waiting_confirmation'),
+    path('purchase-history/', views.purchase_history_view, name='purchase_history'),
     path('login/', views.login_view, name="login"),
     path('logout/', LogoutView.as_view(), name="logout"),
     path('register/', views.register_view, name='register'),
-    path('update-item/', views.updateItem_view, name="update_item"), 
 ]

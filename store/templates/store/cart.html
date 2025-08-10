@@ -15,32 +15,33 @@
             </div>
 
             <div class="cart-bottom">
-                <a class="btn btn-outline-dark" href="{% url 'store' %}">متابعة الشراء &rarr;</a>
+                <a class="btn btn-outline-dark" href="{% url 'store' %}">الرجوع للمتجر &rarr;</a>
             </div>
 
-            <div class="cart-summary">
-                <h5>العناصر: <strong>{{order.get_cart_items}}</strong></h5>
+            <div class="cart-summary"> 
+                <h5>العنـاصـر: <strong>{{order.get_cart_items}}</strong></h5>
+                <hr>
                 <h5>المجموع: <strong>{{order.get_cart_total}}<small> جنيه</small></strong></h5>
             </div>
             
         </div>
 
         <br>
-        <div class="box-element" dir="rtl">
+        <div class="box-element product-details" dir="rtl">
             <div class="cart-row header">
 
-                <div class="flex:1"></div>
-                <div class="flex:2">العنصر</div>
-                <div class="flex:1">السعر</div>
-                <div class="flex:1">الكمية</div>
-                <div class="flex:1">المجموع</div>
-                <div class="flex:1">حذف</div>
+                <div class="flex-1"></div>
+                <div class="flex-2">العنصر</div>
+                <div class="flex-1">السعر</div>
+                <div class="flex-1">الكمية</div>
+                <div class="flex-1">المجموع</div>
+                <div class="flex-1">حذف</div>
 
             </div>
 
             {% for item in items %}
 
-            <div class="cart-row">
+            <div class="cart-row bottom">
 
                 <div class="flex-1"><img class="row-image" src="{{item.product.imageURL}}"></div>
                 <div class="flex-2">{{item.product.name}}</div>

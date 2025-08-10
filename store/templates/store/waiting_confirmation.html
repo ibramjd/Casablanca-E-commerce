@@ -1,7 +1,7 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-<div class="box-element text-center mt-5">
+<div class="box-element text-center mt-5" style="height: 240px; margin: auto;">
     {% if payment %}
         <h2>تم استلام الدفع بنجاح</h2>
         <p>رقم العملية: <strong>{{ payment.transaction_id }}</strong></p>

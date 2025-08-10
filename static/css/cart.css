@@ -1,35 +1,72 @@
 /* cart header */
-.cart-header {
+.row .cart-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
+    color: #fff!important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .cart-summary {
     flex: 2;
     text-align: right;
-    color: #240a34;
 }
 .cart-summary h5 {
     margin: 5px;
     font-weight: 600;
+    color: #fff;
+}
+.cart-summary strong {
+    color: #fff;
+}
+.cart-summary hr {
+    background-color: #fff;
+    border-radius: 6px;
+    margin: 2px auto;
+}
+.cart-summary h5 {
+    font-weight: 400;
 }
 
 /* btns */
 .btn-success {
-    background: #891652;
-    border: 0;
+    background: #0FFCBE;
+    border-radius: 6px;
+    border: none;
+    color: #334f65;
+    font-weight: 600;
 }
 .btn-success:hover {
-    background: #240a34;
+    background: #fff;
+    color: #106EBE;
+}
+.btn-outline-dark {
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 600;
 }
 .btn-outline-dark:hover {
-    background-color: #240a34;
-    color: #fff;
+    background-color: #fff;
+    color: #106EBE;
+    border: none;
 }
   
 /* cart bottom */
+.row .product-details {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(15, 252, 190, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
 .cart-row {
     display: flex;
     align-items: center;
@@ -37,9 +74,17 @@
     border-bottom: 1px solid #ddd;
 }
 .cart-row.header {
-    background-color: #f8f9fa;
-    font-weight: bold;
-    border-bottom: 2px solid #333;
+    background: rgba(255, 255, 255, 0.3);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #106EBE;
+    border-bottom: 2px solid #fff;
+}
+.cart-row.bottom {
+    color: #525a60;
+    font-weight: 500;
 }
 .cart-row > div {
     padding: 0 10px;
@@ -47,15 +92,16 @@
 }
 .cart-row > div.flex-1 {
     flex: 1;
+    text-align: center;
 }
 .cart-row > div.flex-2 {
     flex: 2;
+    text-align: center;
 }
 .row-image {
-    max-width: 60px;
-    max-height: 60px;
+    max-width: 120px;
+    max-height: 120px;
     object-fit: contain;
-    border-radius: 4px;
 }
 .btn-danger {
     padding: 5px 10px;
