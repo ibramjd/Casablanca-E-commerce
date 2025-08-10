@@ -5,30 +5,30 @@
 <!-- cart style -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
 
-<div class="row">
-    <div class="col-lg-12">
+<div class="cart-content">
+    
+    <div class="col-lg-12 mx-auto">
 
-        <div class="box-element cart-header col-lg-10 mx-auto">
+        <div class="cart-header-box" dir="rtl">
 
-            <div class="cart-top">
+            <div class="cart-item cart-top">
+                <a class="btn btn-outline-dark" href="{% url 'store' %}"> &larr; الرجوع للمتجر</a>
+            </div>
+
+            <div class="cart-item cart-bottom">
                 <a class="btn btn-success" href="{% url 'checkout' %}">إتمام عملية الشراء</a>
             </div>
 
-            <div class="cart-bottom">
-                <a class="btn btn-outline-dark" href="{% url 'store' %}">الرجوع للمتجر &rarr;</a>
-            </div>
-
-            <div class="cart-summary"> 
+            <div class="cart-item cart-summary"> 
                 <h5>العنـاصـر: <strong>{{order.get_cart_items}}</strong></h5>
-                <hr>
                 <h5>المجموع: <strong>{{order.get_cart_total}}<small> جنيه</small></strong></h5>
             </div>
             
         </div>
 
         <br>
-        <div class="box-element product-details" dir="rtl">
-            <div class="cart-row header">
+        <div class="cart-bottom-box" dir="rtl">
+            <div class="cart-bottom-item header">
 
                 <div class="flex-1"></div>
                 <div class="flex-2">العنصر</div>
@@ -41,7 +41,7 @@
 
             {% for item in items %}
 
-            <div class="cart-row bottom">
+            <div class="cart-bottom-item bottom">
 
                 <div class="flex-1"><img class="row-image" src="{{item.product.imageURL}}"></div>
                 <div class="flex-2">{{item.product.name}}</div>
@@ -53,7 +53,7 @@
                 <div class="flex-1">
                     <form method="POST" action="{% url 'remove_from_cart' item.id %}">
                         {% csrf_token %}
-                        <button class="btn btn-danger btn-sm">حذف</button>
+                        <button class="delete-btn btn btn-danger btn-sm">حذف</button>
                     </form>
                 </div>
 

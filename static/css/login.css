@@ -1,6 +1,6 @@
 /* main content */
 .form-content {
-    min-height: 100vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,7 +85,7 @@
 /* Placeholder */
 .login-form .input-box input::placeholder {
     color: #a0fff5;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 /* focus effect on inputs */
@@ -95,14 +95,9 @@
     color: #e0f7f4;
 }
 
-/* changing icons color with focus */
-.login-form .input-box input:focus + i {
-    color: #00d6b9;
-}
-
 /* forgot password link */
 .login-form .text a {
-    color: #0FFCBE;
+    color: #fff;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -111,7 +106,7 @@
 }
 
 .login-form .text a:hover {
-    color: #00d6b9;
+    color: #0FFCBE;
     text-decoration: underline;
 }
 
@@ -129,7 +124,7 @@
     align-items: center;
     margin-bottom: 20px;
     width: 100%;
-    padding: 12px 45px 12px 15px;
+    padding: 12px 15px;
     cursor: pointer;
     transition: background 0.3s ease, color 0.3s ease;
 }

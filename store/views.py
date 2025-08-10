@@ -199,45 +199,10 @@ def waiting_confirmation(request):
 @login_required(login_url='login')
 def purchase_history_view(request):
     customer = request.user.customer
-    orders = Order.objects.filter(customer=customer, complete=True).order_by('-date_ordered')
-    payments = Payment.objects.filter(order__in=orders)
+    payments = Payment.objects.filter(customer=request.user.customer).order_by('-date_paid')
 
     context = {
-        'customer': customer,
-        'orders': orders,
-        'payments': payments,
+        'payments':payments,
     }
+
     return render(request, 'store/purchase_history.html', context)
-
-
-# def updateItem_view(request):
-#     data = json.loads(request.body)
-#     productId = data['productId']
-#     action = data['action']
-
-#     print('Action:', action)
-#     print('productId:', productId)
-
-#     try:
-#         customer = request.user.customer
-#     except Customer.DoesNotExist:
-#         customer = Customer.objects.create(
-#         user = request.user,
-#         name = request.user.username,
-#         )
-#     product = Product.objects.get(id=productId)
-#     order, created = Order.objects.get_or_create(customer=customer,
-#         complete=False)
-    
-#     orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
-
-#     if action == 'add':
-#         orderItem.quantity = (orderItem.quantity + 1)
-#     elif action == 'remove':
-#         orderItem.quantity = (orderItem.quantity - 1)
-
-#     orderItem.save()
-
-#     if orderItem.quantity <= 0:
-#         orderItem.delete()
-#     return JsonResponse('Item was added', safe=False)

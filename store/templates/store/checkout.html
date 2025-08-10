@@ -5,45 +5,39 @@
 <!-- checkout style -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/checkout.css' %}">
 
-<div class="row">
-    <div class="col-lg-6 mx-auto" dir="rtl">
-        <div class="box-element" id="form-wrapper">
-            <form method="POST" id="form" action="{% url 'checkout' %}">
-                {% csrf_token %}
-                <div id="shipping-info">
-                    <h5>معلومات التوصيل</h5>
-                    <div class="form-field checkout-form-field input-icon">
-                        <i class="fa fa-phone"></i>
-                        <input required class="form-control" type="text" name="phone_number" placeholder="رقم الهاتف..">
-                    </div>
-                    <hr>
-                    <div class="form-field checkout-form-field input-icon">
-                        <i class="fa fa-map-marker-alt"></i>
-                        <input required class="form-control" type="text" name="state" placeholder="الولاية">
-                    </div> 
-                    <hr>
-                    <div class="form-field checkout-form-field input-icon">
-                        <i class="fa fa-map-marker-alt"></i>
-                        <input required class="form-control" type="text" name="city" placeholder="المدينة">
-                    </div>
-                    <hr>
-                    <div class="form-field checkout-form-field input-icon">
-                        <i class="fa fa-road"></i>
-                        <input required class="form-control" type="text" name="street" placeholder="اسم شارع المنزل">
-                    </div>
-                    <hr>
-                    <div class="form-field checkout-form-field input-icon">
-                        <i class="fa fa-home"></i>
-                        <input required class="form-control" type="text" name="address" placeholder="العنوان">
-                    </div>
-                    <hr>
-
+<div class="checkout-content">
+        
+    <div class="checkout-box" id="form-wrapper">
+        <form method="POST" id="form" action="{% url 'checkout' %}">
+            {% csrf_token %}
+            <div id="shipping-info">
+                <h5 class="title">معلومات التوصيل</h5>
+                <div class="form-field checkout-form-field">
+                    <i class="fa fa-phone"></i>
+                    <input required class="form-control" type="text" name="phone_number" placeholder="رقم الهاتف">
+                </div>
+                <div class="form-field checkout-form-field">
+                    <i class="fa fa-map-marker-alt"></i>
+                    <input required class="form-control" type="text" name="state" placeholder="الولاية">
+                </div> 
+                <div class="form-field checkout-form-field">
+                    <i class="fa fa-map-marker-alt"></i>
+                    <input required class="form-control" type="text" name="city" placeholder="المدينة">
+                </div>
+                <div class="form-field checkout-form-field">
+                    <i class="fa fa-road"></i>
+                    <input required class="form-control" type="text" name="street" placeholder="اسم شارع المنزل">
+                </div>
+                <div class="form-field checkout-form-field">
+                    <i class="fa fa-home"></i>
+                    <input required class="form-control" type="text" name="address" placeholder="العنوان">
                 </div>
 
-                <input id="form-button" class="btn btn-success
-                btn-block" type="submit" value="متابعة عملية الشراء">
-            </form>
-        </div>
+            </div>
+
+            <input id="form-button" class="btn btn-success
+            btn-block" type="submit" value="متابعة عملية الشراء">
+        </form>
     </div>
 </div>
 

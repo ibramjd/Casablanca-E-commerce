@@ -1,18 +1,56 @@
 {% extends 'store/main.html' %}
 {% load static %}
-
 {% block content %}
-<div class="row text-right">
-    <div class="col-lg-12">
-        <div class="box-element col-lg-10 mx-auto" dir="rtl">
-            <h3 class="mb-4">سجل الشراء</h3>
 
-            <div class="mb-3 p-3 border rounded bg-light">
-                <p><strong>اسم المستخدم:</strong> {{customer.name}}</p>
-                <p><strong>البريد الإلكتروني:</strong> {{customer.user.email}}</p>
-            </div>
-            
-        </div>
+<!-- purchase_history style -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/purchase_history.css' %}">
+
+<div class="purchase-content">
+    <div class="title-box col-lg-6 mx-auto" dir="rtl">
+        <div class="title"><strong>سجل المشتريات</strong></div>
     </div>
+
+    <div class="col-lg-6 mx-auto" dir="rtl">
+
+        {% if payments %}
+
+            {% for payment in payments %}
+                
+                <div class="purchase-box">
+                    
+                    <div class="purchase-item">
+                        <i class="fas fa-receipt"></i>
+                        <p><strong>رقم الطلب:</strong> {{payment.order.transaction_id}}</p>
+                    </div>
+                    <div class="purchase-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <p><strong>تاريخ الشراء:</strong> {{payment.date_paid|date:"Y-m-d H:i:s"}}</p>
+                    </div>
+                    <div class="purchase-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <p><strong>المبلغ:</strong> {{payment.amount}} جنيه</p>
+                    </div>
+                    <div class="purchase-item payment_status">
+                        {% if payment.is_confirmed %}
+                                <i class="fas fa-check-circle"></i>
+                                <p class="confirmed"><strong>حالة الطلب:</strong>تم تأكيد الدفع, في انتظار التوصيل</p>
+                        {% else %}
+                                <i class="fas fa-hourglass-half"></i>
+                                <p class="pending"><strong>حالة الطلب:</strong>في انتظار تأكيد عملية الدفع من الإدارة</p>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+                <hr>
+                {% endfor %}
+
+
+        {% else %}
+                <p style="color: #fff; font-weight: 600;">لا توجد مشتريات سابقة</p>
+        
+        {% endif %}
+    </div>
+    
 </div>
-{% endblock %}
+
+{% endblock content %}

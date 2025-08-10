@@ -36,9 +36,13 @@ class PaymentAdmin(admin.ModelAdmin):
     search_fields = ('transaction_id', 'customer__name')
     list_filter = ('date_paid',)
 
+class PurchaseHistoryAdmin(admin.ModelAdmin):
+    list_display = ('customer', 'order', 'payment')
+
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderItem, OrderItemAdmin)
 admin.site.register(ShippingAddress, ShippingAddressAdmin)
 admin.site.register(Payment, PaymentAdmin)
+admin.site.register(PurchaseHistory, PurchaseHistoryAdmin)

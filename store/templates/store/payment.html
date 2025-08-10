@@ -5,59 +5,41 @@
 <!-- payment style -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/payment.css' %}">
 
-<div class="row">
-    <div class="col-lg-6">
-        <div class="box-element" id="form-wrapper">
-            <form id="form" method="POST" action="{% url 'payment' %}">
-                {% csrf_token %}
+<div class="form-content">
+    <!-- الفورم -->
+    <div class="item payment-form">
+        <h3 class="title">الدفع عن طريق بنكك</h3>
 
-                    <!-- Bankak Header -->
-                    <div class="payment-title text-centermy-4
-                    d-flex align-items-center justify-content-center gap-23">
-                        <hr>
-                        <img style="max-width: 25px; max-height: 25px;"
-                        src="{% static 'images/bankak-logo.png' %}" alt="بنكك">
-                        <h5 style="padding-left:10px;"
-                        class="mb-0">الدفع عن طريق بنكك</h5>
-                        <hr>
-                    </div>
-                    
-                    <!-- Bankak Account Details -->
-                    <div class="mb-4 text-center">
-                        <p><strong>رقم الحساب:</strong> 3317329</p>
-                        <p><strong>اسم الحساب:</strong>إبراهيم أمجد الجزولي</p>
-                    </div>
-
-                    <hr>
-
-                    <!-- Enter Payment Details -->
-                     <div id="payment-confirm" class="mb-3">
-                        <div dir="rtl" style="display: flex; gap: 10px;">
-                            <div dir="rtl" class="form-field mb-3">
-                                <input class="form-control" type="number"
-                                name="transaction_id" placeholder="رقم العملية" required>
-                            </div>
-                            <div dir="rtl" class="form-field mb-3">
-                                <input class="form-control" type="number"
-                                name="amount" placeholder="المبلغ المُحوَّل" required>
-                            </div>
-                        </div>
-
-                        <!-- Send Button -->
-                         <input id="form-button" class="btn btn-success
-                         btn-block w-100" type="submit" value="تأكيد التحويل">
-
-                     </div>
-
-            </form>
+        <div class="payment-actions">
+            <a class="btn btn-outline-dark" href="{% url 'store' %}"> &rarr; الرجوع للمتجر </a>
         </div>
+
+        <div class="account-info">
+            <p><strong>رقم الحساب:</strong> 3317329</p>
+            <p><strong>اسم الحساب:</strong> إبراهيم أمجد الجزولي</p>
+        </div>
+
+        <form id="form" method="POST" action="{% url 'payment' %}">
+            {% csrf_token %}
+            <div class="input-box">
+                <input type="number" name="transaction_id" placeholder="رقم العملية" required>
+                <i class="fas fa-hashtag"></i>
+            </div>
+            <div class="input-box">
+                <input type="number" name="amount" placeholder="المبلغ المُحوَّل" required>
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="button">
+                <input type="submit" value="تأكيد التحويل">
+            </div>
+        </form>
     </div>
 
-    <div class="col-lg-6">
-        <div class="box-element">
-            <img src="{% static 'images/payment.jpg' %}" alt="" class="img-fluid">
-        </div>
+    <!-- الصورة -->
+    <div class="item payment-image">
+        <img src="{% static 'images/payment.png' %}" alt="صورة الدفع">
     </div>
 </div>
 
-{% endblock %}
+
+{% endblock content %}

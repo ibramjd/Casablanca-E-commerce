@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-import secrets
+from sequences import get_next_value
 
 
 # Create your models here.
@@ -72,9 +72,10 @@ class Order(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.transaction_id:
-            # Generating a short, unique transaction ID (8 hex characters)
-            self.transaction_id = secrets.token_hex(4)
-        return super().save(*args, **kwargs)
+                
+            next_val = get_next_value('order_transaction_id')
+            self.transaction_id = str(next_val).zfill(4)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return str(self.transaction_id)
@@ -127,6 +128,24 @@ class Payment(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2,default=0)
     date_paid = models.DateTimeField(auto_now_add=True)
     is_confirmed = models.BooleanField(default=False, verbose_name="Is Confirmed?")
+
+    def __str__(self):
+        return str(self.customer)
+    
+
+class PurchaseHistory(models.Model):
+
+    # STATUS_CHOICES = [
+    #     ('pending', 'قيد التأكيد'),
+    #     ('confirmed', 'تم الدفع'),
+    #     ('delivering', 'في انتظار التوصيل'),
+    #     ('delivered', 'تم التوصيل'),
+    # ]
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    order = models.OneToOneField(Order, on_delete=models.CASCADE)
+    payment = models.OneToOneField(Payment, on_delete=models.SET_NULL, null=True, blank=True)
+    # date_purchased = models.DateTimeField(auto_now_add=True)
+    # status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
 
     def __str__(self):
         return str(self.customer)

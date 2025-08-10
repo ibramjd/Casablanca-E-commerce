@@ -1,19 +1,51 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
-<div class="box-element text-center mt-5" style="height: 240px; margin: auto;">
+
+<!-- payment style -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/payment.css' %}">
+
+<div class="form-content justify-content-center" style="min-height: 200px;">
+
+  <div class="item payment-form" style="min-height: auto; max-width: 600px;">
+
     {% if payment %}
-        <h2>تم استلام الدفع بنجاح</h2>
-        <p>رقم العملية: <strong>{{ payment.transaction_id }}</strong></p>
-        <p>المبلغ: <strong>{{ payment.amount }}</strong> جنيه</p>
-        <p>تاريخ الدفع: <strong>{{ payment.date_paid|date:"Y-m-d H:i:s" }}</strong></p>
+        <h2 class="title text-center">تم استلام الدفع بنجاح</h2>
+
+        <div class="account-info text-right" style="color: #fff;">
+            <p>رقم العملية: <strong>{{ payment.transaction_id }}</strong></p>
+            <p>المبلغ: <strong>{{ payment.amount }}</strong> جنيه</p>
+            <p>تاريخ الدفع: <strong>{{ payment.date_paid|date:"Y-m-d H:i:s" }}</strong></p>
+        </div>
         {% if payment.is_confirmed %}
-            <p class="text-success">تم تأكيد الدقع, في انتظار عملية الشحن</p>
+        <div class="input-box"
+        style="background: #0FFCBE;
+        border: 2px solid #0ffcbe;
+        border-radius: 10px;
+        padding: 12px;
+        color: #106ebe;
+        font-weight: 700;
+        margin-top: 15px;
+        text-align: center;">
+            تم تأكيد الدفع, في انتظار عملية الشحن
+        </div>
         {% else %}
-            <p class="text-warning">في انتظار تأكيد عملية الدفع من الإدارة</p>
+        <div class="input-box"
+        style="background: rgba(255, 255, 255, 0.1);
+        border: 2px solid #0FFCBE;
+        border-radius: 10px;
+        padding: 12px;
+        color: #a0fff5;
+        font-weight: 500;
+        margin-top: 15px;
+        text-align: center;">
+            في انتظار تأكيد عملية الدفع من الإدارة
+        </div>
         {% endif %}
-    {% else %}
-        <h2>لا توجد معلومات دفع متاحة</h2>
     {% endif %}
+
+  </div>
+
 </div>
+
 {% endblock %}

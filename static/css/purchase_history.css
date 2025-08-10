@@ -1,0 +1,141 @@
+.purchase-content {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    padding-top: 30px;
+    position: relative;
+}
+
+.purchase-content .col-lg-6 {
+    background: rgba(15, 252, 190, 0.1);
+    border-radius: 16px;
+    padding: 25px;
+    color: #0FFCBE;
+    position: relative;
+    text-align: right;
+    direction: rtl;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    width: 870px !important;
+    max-width: 870px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.purchase-content .title-box {
+    background: #0FFCBE;
+}
+
+.col-lg-6 .title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #106EBE;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.col-lg-6 .title::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+    width: 40px;
+    height: 4px;
+    background: #106EBE;
+    border-radius: 3px;
+}
+
+.col-lg-6 .purchase-box {
+    margin: 0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.col-lg-6 hr {
+    background-color: #fff;
+    border-radius: 6px;
+    height: 1px;
+    opacity: 0.5;
+    margin-bottom: 80px;
+}
+
+.purchase-box .purchase-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    flex: 0 0 calc((100% / 2) - 10px);
+    gap: 10px;
+}
+
+.purchase-box .purchase-item .confirmed,
+.purchase-box .purchase-item .pending {
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 500;
+    margin: 0;
+    text-align: right;
+    padding: 9px 40px 9px 15px;
+    font-size: 16px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.purchase-box .purchase-item .confirmed{
+    background: #0FFCBE;
+    border: 2px solid #0ffcbe;
+    color: #106ebe;
+}
+.purchase-box .purchase-item .pending {
+    background: #c61c1c8a;
+    border: 2px solid #eb4e4e;
+    color: #fff;
+}
+
+.purchase-box .purchase-item:nth-child(n+4) {
+    flex: 0 0 calc((100% / 2) - 10px);
+}
+
+.purchase-box .purchase-item i {
+    position: absolute;
+    right: 14px;
+    font-size: 23px;
+    color: #0FFCBE;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.purchase-item.payment_status .fa-check-circle {
+    position: absolute;
+    right: 14px;
+    font-size: 23px;
+    color: #106ebe;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+.purchase-item.payment_status .fa-hourglass-half {
+    position: absolute;
+    right: 14px;
+    font-size: 23px;
+    color: #fff;
+    pointer-events: none;
+    transition: color 0.3s ease;
+} 
+
+.col-lg-6 .purchase-item p {
+    flex: 1;
+    padding: 9px 40px 9px 15px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    font-weight: 500;
+    margin: 0;
+    box-sizing: border-box;
+    color: #fff;
+}

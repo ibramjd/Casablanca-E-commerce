@@ -1,6 +1,6 @@
 /* Form content wrapper - keep it dark or neutral */
 .form-content {
-    min-height: 100vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,8 +85,8 @@
 
 /* Placeholder */
 .signup-form .input-box input::placeholder {
-    color: #4d4242;
-    font-weight: 300;
+    color: #0a3e6c;
+    font-weight: 500;
 }
 
 /* Focus effect */
@@ -111,10 +111,10 @@
 
 /* Submit button */
 .btn-success {
-    background: #106EBE; /* dark button */
+    background: #106EBE;
     border-radius: 10px;
     border: none;
-    color: #0ffcbe; /* light text */
+    color: #0ffcbe;
     font-weight: 600;
     font-size: 19px;
     margin-top: 30px;
@@ -123,7 +123,7 @@
     align-items: center;
     margin-bottom: 20px;
     width: 100%;
-    padding: 12px 45px 12px 15px;
+    padding: 12px 15px;
     cursor: pointer;
     transition: background 0.3s ease, color 0.3s ease;
 }

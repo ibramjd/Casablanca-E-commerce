@@ -21,7 +21,7 @@
                 <i class="fas fa-lock"></i>
                 <input type="password" name="password" placeholder="ادخل كلمة المرور" required>
             </div>
-            <div class="text"><a href="#">هل نسيت كلمة المرور؟</a></div>
+            <div class="text"><a href="{% url 'reset_password' %}">هل نسيت كلمة المرور؟</a></div>
 
             {% if messages %}
                 {% for message in messages %}

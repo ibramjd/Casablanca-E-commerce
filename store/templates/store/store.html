@@ -5,27 +5,9 @@
 <!-- store style -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/store.css' %}">
 
-<!-- Carousel -->
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{% static 'images/carousel-01.png' %}" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="{% static 'images/carousel-02.png' %}" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="{% static 'images/carousel-03.png' %}" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+<!-- hero section -->
+<div class="hero-section">
+  <img src="{% static 'images/hero-section.png' %}" alt="">
 </div>
 
 <!-- Products Filter -->
@@ -84,9 +66,11 @@
   <div class="row products-row">
       {% for product in products %}
         <div class="product-card col-lg-4">
-            <img class="thumbnail" src="{{product.imageURL}}" alt="">
+            <div class="thumbnail">
+              <img src="{{product.imageURL}}" alt="Product">
+            </div>
             <div class="box-element product">
-                <h6 class="product-name text-right"><strong>{{product.name}}</strong></h6>
+                <h6 class="product-name text-center"><strong>{{product.name}}</strong></h6>
                 <div>
                   <p class="product-description">{{product.description}}</p>
                 </div>

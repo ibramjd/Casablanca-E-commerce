@@ -1,106 +1,112 @@
-.btn-success {
-    background: #0FFCBE;
-    border-radius: 6px;
-    border: none;
-    color: #334f65;
-    font-weight: 600;
-    margin-top: 30px;
-}
-.btn-success:hover {
-    background: #fff;
-    color: #106EBE;
-}
-.btn-outline-dark {
-    border: 1px solid #fff;
-    color: #fff;
-    border-radius: 6px;
-    font-weight: 600;
-}
-.btn-outline-dark:hover {
-    background-color: #fff;
-    color: #106EBE;
-    border: none;
-}
-.box-element {
-    background: none!important;
-    text-align: right;
-    flex: 0 0 0 50%;
-    max-width: 100%;
-    padding: 15px;
-    color: #fff!important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
+.checkout-content {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    padding-top: 70px;
+    position: relative;
 }
 
-.checkout-form-field {
-    display: block;
-    width: 100%;
-    margin-bottom: -5px;
-    margin-top: 5px;
-    padding-right: 30px;
+.checkout-box {
+    width: 520px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(15, 252, 190, 0.1);
+    border-radius: 16px;
+    padding: 35px 30px 40px 30px;
+    color: #fff;
+    position: relative;
+    text-align: right;
+    direction: rtl;
+    margin: auto;
+}
+
+/* title */
+.checkout-box .title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0FFCBE;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.checkout-box .title::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    height: 4px;
+    background: #0FFCBE;
+    border-radius: 3px;
 }
 
 #shipping-info {
-    text-align: right;
+    margin-top: 20px;
 }
 
-#shipping-info h5 {
-    padding: 15px 0;
-    font-weight: 700;
-    color: #fff;
+.checkout-form-field {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.checkout-form-field i {
+    position: absolute;
+    right: 16px;
+    font-size: 20px;
+    color: #0FFCBE;
+    pointer-events: none;
+    transition: color 0.3s ease;
 }
 
 #shipping-info input {
     width: 100%;
-    padding: 10px;
-    background: none;
-    border: none;
-    border-radius: 0;
+    height: 55px;
+    padding: 12px 45px 12px 15px;
+    font-size: 17px;
     color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
     box-sizing: border-box;
-}
-
-#shipping-info input:focus {
-    background: rgba(15, 252, 190, 0.1);
 }
 
 #shipping-info input::placeholder {
-    color: #fff;
-    font-weight: 300;
+    color: #a0fff5;
+    font-weight: 500;
 }
-#shipping-info hr {
-    background-color: #fff;
-    border-radius: 6px;
-    margin: 2px auto;
-    opacity: 0.5;
+
+#shipping-info input:focus {
+    background: rgba(15, 252, 190, 0.15);
+    border-color: #0FFCBE;
+    color: #e0f7f4;
 }
-.input-icon {
-    position: relative;
-}
-.input-icon i {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #0FFCBE;
-    pointer-events: none;
-    font-size: 18px;
-}
-.input-icon input {
-    padding-right: 35px;
-    padding-left: 10px;
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background: none;
+
+
+.btn-success {
+    background: #0FFCBE;
+    border-radius: 10px;
     border: none;
-    border-right: 10px solid #0FFCBE;
-    border-bottom: 1px solid #fff;
-    color: #fff;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
+    color: #334f65;
+    font-weight: 600;
+    font-size: 19px;
+    margin-top: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.btn-success:hover {
+    background: #fff;
+    color: #106EBE;
 }
