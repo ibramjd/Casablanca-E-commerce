@@ -133,19 +133,19 @@ class Payment(models.Model):
         return str(self.customer)
     
 
-class PurchaseHistory(models.Model):
+# class PurchaseHistory(models.Model):
 
-    # STATUS_CHOICES = [
-    #     ('pending', 'قيد التأكيد'),
-    #     ('confirmed', 'تم الدفع'),
-    #     ('delivering', 'في انتظار التوصيل'),
-    #     ('delivered', 'تم التوصيل'),
-    # ]
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    order = models.OneToOneField(Order, on_delete=models.CASCADE)
-    payment = models.OneToOneField(Payment, on_delete=models.SET_NULL, null=True, blank=True)
-    # date_purchased = models.DateTimeField(auto_now_add=True)
-    # status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+#     # STATUS_CHOICES = [
+#     #     ('pending', 'قيد التأكيد'),
+#     #     ('confirmed', 'تم الدفع'),
+#     #     ('delivering', 'في انتظار التوصيل'),
+#     #     ('delivered', 'تم التوصيل'),
+#     # ]
+#     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+#     order = models.OneToOneField(Order, on_delete=models.CASCADE)
+#     payment = models.OneToOneField(Payment, on_delete=models.SET_NULL, null=True, blank=True)
+#     # date_purchased = models.DateTimeField(auto_now_add=True)
+#     # status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
 
-    def __str__(self):
-        return str(self.customer)
+#     def __str__(self):
+#         return str(self.customer)
