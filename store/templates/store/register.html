@@ -7,7 +7,6 @@
 
 <!-- Form Container -->
 <div class="form-content">
-    
     <!-- Register Form -->
     <form class="signup-form" action="{% url 'register' %}" method="POST">
         {% csrf_token %}
@@ -64,5 +63,4 @@
         </div>
     </form>
 </div>
-
 {% endblock content %}

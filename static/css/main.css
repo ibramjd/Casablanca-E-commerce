@@ -110,30 +110,36 @@ h1,h2,h3,h4,h5,h6{
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 }
+
 .navbar .navbar-nav {
 	display: flex;
 	gap: 13px;
 	font-weight: 400;
 	padding-right: 30px;
 }
+
 .navbar-nav a {
 	text-align: center;
 	font-weight: 500;
 	color: #525a60!important;
 }
+
 .navbar-nav a:hover {
 	text-align: right;
 	width: fit-content;
 	color: #106EBE!important;
 	transition: border-bottom .1s ease-out;
 }
+
 .navbar-nav .nav-item::after {
 	transition: background-color 1s ease-in-out;
 }
+
 .logo {
 	max-height: 55px;
 	width: 120px;
 }
+
 footer {
 	background: #085598;
 	margin-top: 50px;
@@ -151,6 +157,7 @@ section.mb-2 {
 	width: 100%;
 	margin: auto;
 }
+
 .btn-floating {
 	font-size: 20px;
     width: 35px;
@@ -159,8 +166,6 @@ section.mb-2 {
     align-items: center;
     justify-content: center;
 }
-
-
 
 /* Responsive styles for various screens */
 @media (max-width: 1200px) {

@@ -8,6 +8,7 @@ from .forms import CustomUserCreationForm
 
 from .models import *
 
+# store fucntion
 def store_view(request):
     category = request.GET.get('category')
     type_of_clothe = request.GET.get('type_of_clothe')
@@ -52,6 +53,7 @@ def store_view(request):
         }
     return render(request, 'store/store.html', context)
 
+# shopping cart fucntion
 @login_required(login_url='login')
 def cart_view(request):
     if request.user.is_authenticated:
@@ -75,8 +77,8 @@ def cart_view(request):
         }
     return render(request, 'store/cart.html', context)
 
-# Add To Cart Function
 
+# add to cart function
 def add_to_cart(request, product_id):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -91,8 +93,7 @@ def add_to_cart(request, product_id):
 
     return redirect('cart')
 
-# Remove From Cart Function
-
+# remove from cart function
 def remove_from_cart(request, item_id):
     if request.method == 'POST':
         item = get_object_or_404(OrderItem, id=item_id)
@@ -101,6 +102,7 @@ def remove_from_cart(request, item_id):
             item.delete()
     return redirect('cart')
 
+# checkout fucntion
 @login_required(login_url='login')
 def checkout_view(request):
     if request.method == 'POST':
@@ -127,8 +129,7 @@ def checkout_view(request):
 
     return render(request, 'store/checkout.html')
 
-# Auth Functions
-
+# login function
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
@@ -136,13 +137,13 @@ def login_view(request):
             login(request, form.get_user())
             return redirect("store")
         else:
-            # Wrong Informations, Redirect to Registeration Page
             messages.error(request, "بياناتك غير صحيحة, الرجاء التسجيل أولاً.")
             return redirect("login")
     else:
         form = AuthenticationForm()
     return render(request, 'store/login.html', {'form':form})
 
+# register fucntion
 def register_view(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
@@ -167,7 +168,7 @@ def register_view(request):
     return render(request, 'store/register.html', {'form': form})
 
 
-#  Payment Function
+#  payment function
 @login_required(login_url='login')
 def payment_view(request):
     if request.method == 'POST':
@@ -177,32 +178,27 @@ def payment_view(request):
         order = Order.objects.filter(customer = customer, complete=False).last()
 
         if order and amount:
-            # Creating a Payment record
             Payment.objects.create(
                 customer=customer,
                 order=order,
                 transaction_id=transaction_id,
                 amount=amount,
             )
-            # Marking the order as complete
             order.complete = True
             order.save()
             return redirect('waiting_confirmation')
                
     return render(request, 'store/payment.html')
 
+# waiting payment confirmation fucntion
 def waiting_confirmation(request):
     customer = request.user.customer
     payment = Payment.objects.filter(customer=customer).order_by('-date_paid').first()
     return render(request, 'store/waiting_confirmation.html', {'payment': payment})
 
+# purchase history fucntion
 @login_required(login_url='login')
 def purchase_history_view(request):
     customer = request.user.customer
     payments = Payment.objects.filter(customer=request.user.customer).order_by('-date_paid')
-
-    context = {
-        'payments':payments,
-    }
-
-    return render(request, 'store/purchase_history.html', context)
+    return render(request, 'store/purchase_history.html', {'payments': payments})

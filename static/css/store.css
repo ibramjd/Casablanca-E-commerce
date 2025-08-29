@@ -48,6 +48,7 @@
     max-width: 33.3333%;
     padding: 25px;
 }
+
 .thumbnail {
     width: 100%;
     height: 200px;
@@ -87,7 +88,8 @@
     font-weight: 700;
     padding-top: 2px;
     padding-bottom: 0;
-    margin-bottom: 0;}
+    margin-bottom: 0;
+}
 
 .product-description {
     text-align: center;
@@ -136,6 +138,7 @@
     height: 35px;
     font-size: 14px;
 }
+
 .product-buttons a {
     flex: 1;
     height: 35px;
@@ -155,6 +158,7 @@
     background: url('/static/images/arrow-down.svg') no-repeat left 5px center;
     background-size: 13px;
 }
+
 .form-select:hover {
     color: #2a3734;
     cursor: pointer; 
@@ -166,6 +170,7 @@
     color: #106EBE;
     border: 1.6px solid #fff;
 }
+
 .category-form .btn-warning:hover {
     background-color: #0FFCBE!important;
     color: #106EBE;

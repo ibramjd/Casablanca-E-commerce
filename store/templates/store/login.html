@@ -7,7 +7,6 @@
 
 <!-- Form Container -->
 <div class="form-content">
-
     <!-- Login Form -->
     <form class="login-form" action="{% url 'login' %}" method="post">
         {% csrf_token %}
@@ -37,7 +36,5 @@
             <div class="text login-text">ليس لديك حساب؟<a href="{% url 'register' %}">سجل معنا الآن</a></div>
         </div>
     </form>
-
 </div>
-
 {% endblock content %}

@@ -2,21 +2,18 @@ from django.db import models
 from django.contrib.auth.models import User
 from sequences import get_next_value
 
-
-# Create your models here.
-
+# customer model
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=200, null=True)
     email = models.EmailField(max_length=254, null=True, blank=True)
     phone_number = models.CharField(max_length=15, null=True, blank=True)
 
-
     def __str__(self):
         return self.name
     
+# product model
 class Product(models.Model):
-
     CATEGORY_CHOICES = (
         ('men', 'رجالي'),
         ('women', 'نسائي'),
@@ -45,7 +42,6 @@ class Product(models.Model):
         ('sunglasses', 'نظارات شمسية'),
         ('watches', 'ساعات'),
 )
-
     name = models.CharField(max_length=200, null=True)
     description = models.TextField(null=True, blank=True)
     price = models.DecimalField(decimal_places=3, max_digits=10, default=0)
@@ -64,6 +60,7 @@ class Product(models.Model):
             url = ''
         return url
 
+# order model
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
@@ -71,8 +68,7 @@ class Order(models.Model):
     transaction_id = models.CharField(max_length=200, null=True)
 
     def save(self, *args, **kwargs):
-        if not self.transaction_id:
-                
+        if not self.transaction_id:  
             next_val = get_next_value('order_transaction_id')
             self.transaction_id = str(next_val).zfill(4)
         super().save(*args, **kwargs)
@@ -92,6 +88,7 @@ class Order(models.Model):
         total = sum([item.quantity for item in orderitems])
         return total
 
+# order item model
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True, blank=True)
@@ -106,6 +103,7 @@ class OrderItem(models.Model):
     def __str__(self):
         return str(self.product.name)
 
+# shipping address model
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True, blank=True)
@@ -119,8 +117,7 @@ class ShippingAddress(models.Model):
     def __str__(self):
         return self.address
 
-# Payment Model
-
+# payment model
 class Payment(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
@@ -131,21 +128,3 @@ class Payment(models.Model):
 
     def __str__(self):
         return str(self.customer)
-    
-
-# class PurchaseHistory(models.Model):
-
-#     # STATUS_CHOICES = [
-#     #     ('pending', 'قيد التأكيد'),
-#     #     ('confirmed', 'تم الدفع'),
-#     #     ('delivering', 'في انتظار التوصيل'),
-#     #     ('delivered', 'تم التوصيل'),
-#     # ]
-#     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-#     order = models.OneToOneField(Order, on_delete=models.CASCADE)
-#     payment = models.OneToOneField(Payment, on_delete=models.SET_NULL, null=True, blank=True)
-#     # date_purchased = models.DateTimeField(auto_now_add=True)
-#     # status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
-
-#     def __str__(self):
-#         return str(self.customer)

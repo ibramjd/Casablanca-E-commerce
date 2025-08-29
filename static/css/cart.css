@@ -11,7 +11,6 @@
     width: 1000px;
 }
 
-
 /* cart header */
 .cart-content .col-lg-12 {
     border-radius: 16px;
@@ -26,8 +25,6 @@
     max-width: 1000px;
 }
 
-
-
 .col-lg-12 .cart-header-box {
     min-height: 50px;
     margin: 0 30px;
@@ -38,16 +35,19 @@
     flex-wrap: nowrap;
     direction: ltr;
 }
+
 .cart-header-box > .cart-item.cart-summary {
     flex: 1;
     text-align: right;
     color: #106EBE;
 }
+
 .cart-header-box > .cart-item.cart-summary h5 {
     flex: 1;
     text-align: right;
     color: #fff;
 }
+
 .cart-header-box > div.cart-item:not(.cart-summary) {
     display: flex;
     flex-direction: column;
@@ -55,8 +55,6 @@
     align-items: flex-end;
     flex: 0 0 auto;
 }
-
-
 
 /* btns */
 .btn-success {
@@ -66,27 +64,30 @@
     color: #334f65;
     font-weight: 600;
 }
+
 .btn-success:hover {
     background: #fff;
     color: #106EBE;
 }
+
 .btn-outline-dark {
     border: 1px solid #fff;
     color: #fff;
     border-radius: 10px;
     font-weight: 600;
 }
+
 .btn-outline-dark:hover {
     background-color: #fff;
     color: #106EBE;
     border: 1px solid #106EBE;
 }
+
 .delete-btn {
     padding: 5px 10px;
     font-size: 0.9rem;
 }
   
-
 /* cart bottom */
 .cart-content .cart-bottom-box {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -97,12 +98,14 @@
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
+
 .cart-bottom-item {
     display: flex;
     align-items: center;
     padding: 10px 20px;
     border-bottom: 1px solid #ddd;
 }
+
 .cart-bottom-item.header {
     background: rgba(255, 255, 255, 0.5);
     border-top-left-radius: 10px;
@@ -112,32 +115,39 @@
     color: #106EBE;
     border-bottom: 2px solid #fff;
 }
+
 .cart-bottom-item.bottom {
     color: #525a60;
     font-weight: 500;
     border: none;
 }
+
 .cart-bottom-item > div {
     padding: 0 10px;
     box-sizing: border-box;
 }
+
 .cart-bottom-item > div.flex-1 {
     flex: 1;
     text-align: center;
 }
+
 .cart-bottom-item > div.flex-2 {
     flex: 2;
     text-align: center;
 }
+
 .row-image {
     max-width: 120px;
     max-height: 120px;
     object-fit: contain;
 }
+
 .quantity {
     margin: 0;
     text-align: center;
 }
+
 .cart-bottom-box {
     max-width: 900px;
     margin: 20px auto;

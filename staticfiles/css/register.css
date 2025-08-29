@@ -1,4 +1,4 @@
-/* Form content wrapper - keep it dark or neutral */
+/* Form content */
 .form-content {
     min-height: 60vh;
     display: flex;
@@ -81,7 +81,6 @@
     font-weight: 500;
     box-sizing: border-box;
 }
-
 
 /* Placeholder */
 .signup-form .input-box input::placeholder {

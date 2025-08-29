@@ -7,15 +7,11 @@
 
 <div class="purchase-content">
     <div class="title-box col-lg-6 mx-auto" dir="rtl">
-        <div class="title"><strong>سجل المشتريات</strong></div>
+        <div class="title"><strong>سجل الشراء</strong></div>
     </div>
-
     <div class="col-lg-6 mx-auto" dir="rtl">
-
         {% if payments %}
-
-            {% for payment in payments %}
-                
+            {% for payment in payments %}   
                 <div class="purchase-box">
                     
                     <div class="purchase-item">
@@ -43,14 +39,9 @@
                 </div>
                 <hr>
                 {% endfor %}
-
-
         {% else %}
                 <p style="color: #fff; font-weight: 600;">لا توجد مشتريات سابقة</p>
-        
         {% endif %}
     </div>
-    
 </div>
-
 {% endblock content %}

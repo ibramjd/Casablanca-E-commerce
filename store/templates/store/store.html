@@ -9,8 +9,9 @@
 <div class="hero-section">
   <img src="{% static 'images/hero-section.png' %}" alt="">
 </div>
+<!-- end hero section -->
 
-<!-- Products Filter -->
+<!-- clothing classification  -->
 <form method="get" class="mb-8 category-form text-center" style="max-width: 1200px; margin: auto;">
   <div class="row justify-content-center">
     <div class="col-md-2 mb-4">
@@ -60,34 +61,35 @@
     </div>
   </div>
 </form>
+<!-- end clothing classification  -->
 
-
-<!-- Products -->
-  <div class="row products-row">
-      {% for product in products %}
-        <div class="product-card col-lg-4">
-            <div class="thumbnail">
-              <img src="{{product.imageURL}}" alt="Product">
-            </div>
-            <div class="box-element product">
-                <h6 class="product-name text-center"><strong>{{product.name}}</strong></h6>
-                <div>
-                  <p class="product-description">{{product.description}}</p>
+<!-- products -->
+<div class="row products-row">
+    {% for product in products %}
+      <div class="product-card col-lg-4">
+          <div class="thumbnail">
+            <img src="{{product.imageURL}}" alt="Product">
+          </div>
+          <div class="box-element product">
+              <h6 class="product-name text-center"><strong>{{product.name}}</strong></h6>
+              <div>
+                <p class="product-description">{{product.description}}</p>
+              </div>
+              <hr>
+              <div class="product-footer">
+                <h4 class="price-text">{{product.price}}<small> جنيه</small></h4>
+                <div class="product-buttons">
+                  <form method="POST" action="{% url 'add_to_cart' product.id %}">
+                    {% csrf_token %}
+                    <button class="btn btn-success w-100">أضف للسلة</button>
+                  </form>
+                  <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-outline-dark  add-btn w-100">عرض</a>
                 </div>
-                <hr>
-                <div class="product-footer">
-                  <h4 class="price-text">{{product.price}}<small> جنيه</small></h4>
-                  <div class="product-buttons">
-                    <form method="POST" action="{% url 'add_to_cart' product.id %}">
-                      {% csrf_token %}
-                      <button class="btn btn-success w-100">أضف للسلة</button>
-                    </form>
-                    <a data-fancybox="gallery" href="{{product.imageURL}}" class="btn btn-outline-dark  add-btn w-100">عرض</a>
-                  </div>
-                </div>
-            </div>
-        </div>
-      {% endfor %}
-  </div>
+              </div>
+          </div>
+      </div>
+    {% endfor %}
+</div>
+<!-- end products -->
 
 {% endblock content %}
