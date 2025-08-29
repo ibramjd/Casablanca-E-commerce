@@ -4,7 +4,7 @@
 Casablanca is an online clothing store, developed using the Django framework
 
 ***
-### Features Included
+## Features Included
 
 - 🛍️ Product Management: Organized product display with categories, details, and images.
 
@@ -21,7 +21,7 @@ Casablanca is an online clothing store, developed using the Django framework
 - 🔒 Security: Built-in authentication for safe and reliable user experience.
 
 ***
-### Installation
+## Installation
 
 1.Install Python:
 Download and install the latest stable version of Python for your system from python.org
@@ -36,15 +36,14 @@ cd Casablanca-E-commerce
 3.Create Virtual Environment
 ```bash
 python -m venv env
-```
 
-Activate the environment
-```bash
-On Windows:
+  *Activate the environment
+
+  *On Windows:
 
 env\Scripts\activate
 
-On macOS/Linux:
+  *On macOS/Linux:
 source env/bin/activate
 ```
 
@@ -68,8 +67,6 @@ python manage.py collectstatic
 ```bash
 python manage.py runserver
 ```
-
-8.Open your browser and go to http://127.0.0.1:8000/ to see the project running.
 
 ***
 ## Usage Example
@@ -98,3 +95,10 @@ python manage.py runserver
 
 - Login to django admin panel.
 - Manage products, customers, orders, order items, payments, and shipping addresses.
+
+***
+## Contributor Credits 
+
+- **Ibrahim Amjad** - Project Developer ( Frontend & Backend ).
+- **Django Framework** - For authentication and admin panel features.
+- **Copilot & ChatGPT** - Assisting in coding and project structure.
