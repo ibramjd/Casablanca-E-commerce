@@ -6,11 +6,9 @@ Casablanca is an online clothing store, developed using the Django framework
 
 ### Features Included
 
-- 🚀 Features Included
-
 - 🛍️ Product Management: Organized product display with categories, details, and images.
 
-- 🛒 Shopping Cart: Dynamic cart that updates automatically when items are added, edited, or removed.
+- 🛒 Shopping Cart: Dynamic cart that updates automatically when items are added, or removed.
 
 - 💳 Payment System: Integrated with Bank of Khartoum (Bankak), with manual confirmation.
 
@@ -25,3 +23,43 @@ Casablanca is an online clothing store, developed using the Django framework
 ---
 
 ### Installation
+
+1.Install Python
+Download and install the latest stable version of Python for your system from python.org
+. Make sure to check “Add Python to PATH” during installation.
+
+2.Clone the Repository
+
+git clone https://github.com/ibramjd/Casablanca-E-commerce.git
+cd Casablanca-E-commerce
+
+3.Create Virtual Environment
+
+python -m venv env
+
+Activate the environment
+On Windows:
+
+env\Scripts\activate
+
+On macOS/Linux:
+source env/bin/activate
+
+4.Install Required Packages
+
+pip install -r requirements.txt
+
+5.Apply Migrations
+
+python manage.py makemigrations
+python manage.py migrate
+
+6.Collect Static Files
+
+python manage.py collectstatic
+
+7.Run the Server
+
+python manage.py runserver
+
+8.Open your browser and go to http://127.0.0.1:8000/ to see the project running.
