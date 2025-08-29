@@ -24,11 +24,11 @@ Casablanca is an online clothing store, developed using the Django framework
 
 ### Installation
 
-1.Install Python
+1.Install Python:
 Download and install the latest stable version of Python for your system from python.org
 . Make sure to check “Add Python to PATH” during installation.
 
-2.Clone the Repository
+2.Clone the Repository:
 
 ```bash
 git clone https://github.com/ibramjd/Casablanca-E-commerce.git
