@@ -33,34 +33,36 @@ Download and install the latest stable version of Python for your system from py
 ```bash
 git clone https://github.com/ibramjd/Casablanca-E-commerce.git
 cd Casablanca-E-commerce
+```
 
 3.Create Virtual Environment
-
+```bash
 python -m venv env
-
+```
 Activate the environment
+```bash
 On Windows:
 
 env\Scripts\activate
 
 On macOS/Linux:
 source env/bin/activate
-
+```
 4.Install Required Packages
-
+```bash
 pip install -r requirements.txt
-
+```
 5.Apply Migrations
-
+```bash
 python manage.py makemigrations
 python manage.py migrate
-
+```
 6.Collect Static Files
-
+```bash
 python manage.py collectstatic
-
+```
 7.Run the Server
-
+```bash
 python manage.py runserver
-
+```
 8.Open your browser and go to http://127.0.0.1:8000/ to see the project running.
