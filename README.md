@@ -30,6 +30,7 @@ Download and install the latest stable version of Python for your system from py
 
 2.Clone the Repository
 
+```bash
 git clone https://github.com/ibramjd/Casablanca-E-commerce.git
 cd Casablanca-E-commerce
 
