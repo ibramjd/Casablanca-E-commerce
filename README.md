@@ -2,7 +2,6 @@
 
 Casablanca is an online clothing store, developed using the Django framework
 
----
 
 ### Features Included
 
@@ -20,7 +19,6 @@ Casablanca is an online clothing store, developed using the Django framework
 
 - 🔒 Security: Built-in authentication for safe and reliable user experience.
 
----
 
 ### Installation
 
