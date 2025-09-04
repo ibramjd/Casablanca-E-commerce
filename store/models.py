@@ -122,7 +122,7 @@ class Payment(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     transaction_id = models.CharField(max_length=200)
-    amount = models.DecimalField(max_digits=10, decimal_places=2,default=0)
+    amount = models.DecimalField(max_digits=10, decimal_places=0,default=0)
     date_paid = models.DateTimeField(auto_now_add=True)
     is_confirmed = models.BooleanField(default=False, verbose_name="Is Confirmed?")
 

@@ -221,23 +221,38 @@ def payment_view(request):
     
     total_with_delivery = order.get_cart_total + delivery_cost
 
+    payment_method = request.POST.get("payment_method")
+
     if request.method == 'POST':
-        transaction_id = request.POST.get('transaction_id')
-        amount = request.POST.get('amount')
         customer = request.user.customer
         order = Order.objects.filter(customer = customer, complete=False).last()
+        
+        if payment_method == "bankak":
+            transaction_id = request.POST.get('transaction_id')
+            amount = request.POST.get('amount')
 
-        if order and amount:
+            if transaction_id and amount:
+                Payment.objects.create(
+                    customer=customer,
+                    order=order,
+                    transaction_id=transaction_id,
+                    amount=amount,
+                )
+                order.complete = True
+                order.save()
+                return redirect('waiting_confirmation')
+        elif payment_method == "cod":
+
             Payment.objects.create(
                 customer=customer,
                 order=order,
-                transaction_id=transaction_id,
-                amount=amount,
+                transaction_id="",
+                amount=0,
             )
             order.complete = True
             order.save()
-            return redirect('waiting_confirmation')   
-
+            return redirect('waiting_delivery')
+    
     context = {
         'items':items,
         'order':order,

@@ -24,15 +24,15 @@
                     </div>
                     <div class="purchase-item">
                         <i class="fas fa-dollar-sign"></i>
-                        <p><strong>المبلغ:</strong> {{payment.amount}} جنيه</p>
+                        <p><strong>المبلغ:</strong> {{payment.order.get_cart_total}} جنيه</p>
                     </div>
                     <div class="purchase-item payment_status">
                         {% if payment.is_confirmed %}
                                 <i class="fas fa-check-circle"></i>
-                                <p class="confirmed"><strong>حالة الطلب:</strong>تم تأكيد الدفع, في انتظار التوصيل</p>
+                                <p class="confirmed"><strong>حالة الدفع:</strong>تم تأكيد الدفع, في انتظار التوصيل</p>
                         {% else %}
                                 <i class="fas fa-hourglass-half"></i>
-                                <p class="pending"><strong>حالة الطلب:</strong>في انتظار تأكيد عملية الدفع من الإدارة</p>
+                                <p class="pending"><strong>حالة الدفع:</strong>في انتظار تأكيد عملية الدفع من الإدارة</p>
                         {% endif %}
                     </div>
                     
