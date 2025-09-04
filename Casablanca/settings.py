@@ -144,5 +144,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = '/login/'
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'casablanca-egx2.onrender.com']
+DEBUG = False
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'casablanca.pythonanywhere.com']
+CSRF_TRUSTED_ORIGINS = ["https://casablanca.pythonanywhere.com"]
 
