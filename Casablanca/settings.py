@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ws#3(u9bil9===bv$+o6vh2+t!!fg&k9z8-rz&)+qr7*fo%_w4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -144,7 +144,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = '/login/'
-DEBUG = False
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'casablanca.pythonanywhere.com']
-CSRF_TRUSTED_ORIGINS = ["https://casablanca.pythonanywhere.com"]
+
 
