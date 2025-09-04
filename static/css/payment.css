@@ -147,3 +147,14 @@
     color: #106EBE;
     border: 1px solid #106EBE;
 }
+
+.payment-form hr {
+    border: #fff solid 1px;
+    border-radius: 10px;
+}
+
+.payment-form h4 {
+    color: #fff;
+    padding: 20px 0;
+    font-weight: 600;
+}

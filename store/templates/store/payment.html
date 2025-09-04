@@ -5,7 +5,7 @@
 <!-- payment style -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/payment.css' %}">
 
-<div class="form-content">
+<!-- <div class="form-content">
     <div class="item payment-form">
         <h3 class="title">الدفع عن طريق بنكك</h3>
 
@@ -32,11 +32,89 @@
                 <input type="submit" value="تأكيد التحويل">
             </div>
         </form>
-    </div>
+    </div> -->
 
     <!-- image -->
-    <div class="item payment-image">
+    <!-- <div class="item payment-image">
         <img src="{% static 'images/payment.png' %}" alt="صورة الدفع">
+    </div>
+</div> -->
+
+<div class="form-content">
+    <!-- image -->
+    <div class="item payment-image">
+        <div class="account-info">
+            <p><strong>حساب المشتريات :</strong> {{order.get_cart_total}} جنيه</p>
+            <p><strong>توصيل لولاية :</strong> {{state}}</p>
+            <p><strong>توصيل خلال :</strong> {{delivered_within}}</p>
+            <p><strong>تكلفة التوصيل :</strong> {{delivery_cost}} جنيه</p>
+            <p><strong>الإجمالي مع التوصيل :</strong> {{total_with_delivery}} جنيه</p>
+        </div>
+        <img src="{% static 'images/payment.png' %}">
+    </div>
+
+    <div class="item payment-form">
+        {% if state == "القضارف" %}
+        <h3 class="title">اختر طريقة الدفع</h3>
+        <hr>
+        <!-- cash on delivery -->
+        <h4>الدفع عند الإستلام</h4>
+        <div class="payment-card cod-card">
+            <form id="form" method="POST" action="{% url 'waiting_delivery' %}">
+                {% csrf_token %}
+                <div class="input-box">
+                    <input type="hidden" name="payment_method" value="cod">
+                </div>
+                <div class="button">
+                    <input type="submit" value="تأكيد">
+                </div>
+            </form>
+        </div>
+        <hr>
+        <!-- bankak -->
+        <h4>الدفع عن طريق بنكك</h4>
+        <div class="payment-card bankak-card">
+            <form id="form" method="POST" action="{% url 'payment' %}">
+                {% csrf_token %}
+                <div class="account-info">
+                <p><strong>رقم الحساب:</strong> 3317329</p>
+                <p><strong>اسم الحساب:</strong> إبراهيم أمجد الجزولي</p>
+                <div class="input-box">
+                    <input type="number" name="transaction_id" placeholder="رقم العملية" required>
+                    <i class="fas fa-hashtag"></i>
+                </div>
+                <div class="input-box">
+                    <input type="number" name="amount" placeholder="المبلغ المُحوَّل" required>
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="button">
+                    <input type="submit" value="تأكيد التحويل">
+                </div>
+            </form>
+        </div>
+        {% else %}
+        <h3 class="title">الدفع بنكك فقط عند التوصيل للولايات</h3>
+        <hr>
+        <div class="payment-card bankak-card">
+            <form id="form" method="POST" action="{% url 'payment' %}">
+                {% csrf_token %}
+                <div class="account-info">
+                <p><strong>رقم الحساب:</strong> 3317329</p>
+                <p><strong>اسم الحساب:</strong> إبراهيم أمجد الجزولي</p>
+                <div class="input-box">
+                    <input type="number" name="transaction_id" placeholder="رقم العملية" required>
+                    <i class="fas fa-hashtag"></i>
+                </div>
+                <div class="input-box">
+                    <input type="number" name="amount" placeholder="المبلغ المُحوَّل" required>
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="button">
+                    <input type="submit" value="تأكيد التحويل">
+                </div>
+            </form>
+        </div>
+        {% endif %}
     </div>
 </div>
 

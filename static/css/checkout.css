@@ -78,6 +78,26 @@
     box-sizing: border-box;
 }
 
+#shipping-info select {
+    width: 100%;
+    height: 55px;
+    padding: 12px 45px 12px 15px;
+    font-size: 17px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #0FFCBE;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-sizing: border-box;
+}
+
+#shipping-info select option {
+    background-color: #073760;
+    border-radius: 10px;
+}
+
 #shipping-info input::placeholder {
     color: #a0fff5;
     font-weight: 500;

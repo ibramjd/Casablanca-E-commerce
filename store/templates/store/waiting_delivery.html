@@ -1,0 +1,27 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- payment style -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/payment.css' %}">
+
+<div class="form-content justify-content-center" style="min-height: 200px;">
+  <div class="item payment-form" style="min-height: auto; max-width: 600px;">
+        <h2 class="title text-center">تم تأكيد الطلب, التوصيل خلال 24 ساعة</h2>
+        <div class="account-info text-right" style="color: #fff;">
+            <p>سيقوم مندوب التوصيل بالإتصال بك قبل ساعة من التحرك, رجاءاً تأكد من جعل هاتفك يعمل.</p>
+        </div>
+        <div class="input-box"
+        style="background: #0FFCBE;
+        border: 2px solid #0ffcbe;
+        border-radius: 10px;
+        padding: 12px;
+        color: #106ebe;
+        font-weight: 700;
+        margin-top: 15px;
+        text-align: center;">
+           في انتظار عملية الشحن
+        </div>
+  </div>
+</div>
+{% endblock %}

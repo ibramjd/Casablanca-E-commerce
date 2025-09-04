@@ -22,11 +22,11 @@ def store_view(request):
         products = products.filter(type_of_clothe=type_of_clothe)
     if price:
         if price == 'low':
-            products = products.filter(price__lt=10.000)
+            products = products.filter(price__lt=10000)
         elif price == 'mid':
-            products = products.filter(price__gte=10.000, price__lt=25.000)
+            products = products.filter(price__gte=10000, price__lt=25000)
         elif price == 'high':
-            products = products.filter(price__gte=25.000)
+            products = products.filter(price__gte=25000)
 
     if request.user.is_authenticated:
         customer, created = Customer.objects.get_or_create(
@@ -125,6 +125,8 @@ def checkout_view(request):
             phone_number = phone_number,
         )
 
+        # save state in a session
+        request.session['state'] = state
         return redirect('payment')
 
     return render(request, 'store/checkout.html')
@@ -171,6 +173,54 @@ def register_view(request):
 #  payment function
 @login_required(login_url='login')
 def payment_view(request):
+    customer = request.user.customer
+    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+    items = order.orderitem_set.all()
+
+    states = {
+        "Gadaref": "القضارف",
+        "Khartoum": "الخرطوم",
+        "Al Jazirah": "الجزيرة",
+        "Kassala": "كسلا",
+        "Red Sea": "البحر الأحمر",
+        "River Nile": "نهر النيل",
+        "Northern": "الشمالية",
+        "North Kordofan": "شمال كردفان",
+        "South Kordofan": "جنوب كردفان",
+        "West Kordofan": "غرب كردفان",
+        "North Darfur": "شمال دارفور",
+        "South Darfur": "جنوب دارفور",
+        "East Darfur": "شرق دارفور",
+        "Central Darfur": "وسط دارفور",
+        "West Darfur": "غرب دارفور",
+        "Sennar": "سنار",
+        "White Nile": "النيل الأبيض",
+        "Blue Nile": "النيل الأزرق",
+    }
+    
+    state_key = request.session.get('state')
+    state_name = states.get(state_key, 'الولاية غير موجودة')
+    if state_key == "Gadaref":
+        delivered_within = "24 ساعة"
+        delivery_cost = 4000
+    elif state_key in ["Al Jazirah", "Kassala"]:
+        delivered_within = "3 أيام"
+        delivery_cost = 8000
+    elif state_key in ["Khartoum", "Sennar", "White Nile"]:
+        delivered_within = "4 أيام"
+        delivery_cost = 9000
+    elif state_key in ["River Nile", "Northern", "Red Sea", "Blue Nile", "North Kordofan", "South Kordofan", "West Kordofan"]:
+        delivered_within = "5 أيام"
+        delivery_cost = 11000
+    elif state_key in ["North Darfur", "South Darfur", "East Darfur", "Central Darfur", "West Darfur"]:
+        delivered_within = "7 أيام"
+        delivery_cost = 15000
+    else:
+        delivered_within = "لم يتم إختيار ولاية"
+        delivery_cost = "لم يتم إختيار ولاية"
+    
+    total_with_delivery = order.get_cart_total + delivery_cost
+
     if request.method == 'POST':
         transaction_id = request.POST.get('transaction_id')
         amount = request.POST.get('amount')
@@ -186,15 +236,30 @@ def payment_view(request):
             )
             order.complete = True
             order.save()
-            return redirect('waiting_confirmation')
+            return redirect('waiting_confirmation')   
+
+    context = {
+        'items':items,
+        'order':order,
+        'state':state_name,
+        'delivered_within':delivered_within,
+        'delivery_cost':delivery_cost,
+        'total_with_delivery':total_with_delivery,
+        }
                
-    return render(request, 'store/payment.html')
+    return render(request, 'store/payment.html', context)
 
 # waiting payment confirmation fucntion
 def waiting_confirmation(request):
     customer = request.user.customer
     payment = Payment.objects.filter(customer=customer).order_by('-date_paid').first()
     return render(request, 'store/waiting_confirmation.html', {'payment': payment})
+
+# waiting delivery
+def waiting_delivery(request):
+    customer = request.user.customer
+    payment = Payment.objects.all()
+    return render(request, 'store/waiting_delivery.html', {'payment':payment})
 
 # purchase history fucntion
 @login_required(login_url='login')
