@@ -31,9 +31,14 @@ class ShippingAddressAdmin(admin.ModelAdmin):
     list_filter = ('date_added',)
 
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ('customer', 'order', 'transaction_id', 'amount', 'date_paid')
+    list_display = ('customer', 'order', 'get_state', 'transaction_id', 'amount', 'date_paid')
     search_fields = ('transaction_id', 'customer__name')
     list_filter = ('date_paid',)
+
+    def get_state(self, obj):
+        address = ShippingAddress.objects.filter(order=obj.order).last()
+        return address.state if address else "-"
+    get_state.short_description = 'State'
 
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Product, ProductAdmin)
