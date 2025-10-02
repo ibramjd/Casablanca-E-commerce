@@ -65,7 +65,7 @@
 
 <!-- products -->
 <div class="row products-row">
-    {% for product in products %}
+    {% for product in page_obj %}
       <div class="product-card col-lg-4">
           <div class="thumbnail">
             <img src="{{product.imageURL}}" alt="Product">
@@ -89,6 +89,16 @@
           </div>
       </div>
     {% endfor %}
+</div>
+
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}{% if category %}&category={{ category }}{% endif %}{% if type_of_clothe %}&type_of_clothe={{ type_of_clothe }}{% endif %}{% if price %}&price={{ price }}{% endif %}">&laquo; السابق</a>
+    {% endif %}
+    <span>صفحة {{ page_obj.number }} من {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{% if category %}&category={{ category }}{% endif %}{% if type_of_clothe %}&type_of_clothe={{ type_of_clothe }}{% endif %}{% if price %}&price={{ price }}{% endif %}">التالي &raquo;</a>
+    {% endif %}
 </div>
 <!-- end products -->
 

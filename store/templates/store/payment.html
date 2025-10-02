@@ -5,41 +5,6 @@
 <!-- payment style -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/payment.css' %}">
 
-<!-- <div class="form-content">
-    <div class="item payment-form">
-        <h3 class="title">الدفع عن طريق بنكك</h3>
-
-        <div class="payment-actions">
-            <a class="btn btn-outline-dark" href="{% url 'store' %}"> &rarr; الرجوع للمتجر </a>
-        </div>
-
-        <div class="account-info">
-            <p><strong>رقم الحساب:</strong> 3317329</p>
-            <p><strong>اسم الحساب:</strong> إبراهيم أمجد الجزولي</p>
-        </div>
-
-        <form id="form" method="POST" action="{% url 'payment' %}">
-            {% csrf_token %}
-            <div class="input-box">
-                <input type="number" name="transaction_id" placeholder="رقم العملية" required>
-                <i class="fas fa-hashtag"></i>
-            </div>
-            <div class="input-box">
-                <input type="number" name="amount" placeholder="المبلغ المُحوَّل" required>
-                <i class="fas fa-dollar-sign"></i>
-            </div>
-            <div class="button">
-                <input type="submit" value="تأكيد التحويل">
-            </div>
-        </form>
-    </div> -->
-
-    <!-- image -->
-    <!-- <div class="item payment-image">
-        <img src="{% static 'images/payment.png' %}" alt="صورة الدفع">
-    </div>
-</div> -->
-
 <div class="form-content">
     <!-- image -->
     <div class="item payment-image">
@@ -92,7 +57,7 @@
             </form>
         </div>
         {% else %}
-        <h3 class="title">الدفع بنكك فقط عند التوصيل للولايات</h3>
+        <h3 class="title">يجب دفع مبلــغ التوصيـــل أولاً للإستلام خارج ولاية القضارف</h3>
         <hr>
         <div class="payment-card bankak-card">
             <form id="form" method="POST" action="{% url 'payment' %}">
@@ -100,6 +65,7 @@
                 <div class="account-info">
                 <p><strong>رقم الحساب:</strong> 3317329</p>
                 <p><strong>اسم الحساب:</strong> إبراهيم أمجد الجزولي</p>
+                <input type="hidden" name="payment_method" value="bankak">
                 <div class="input-box">
                     <input type="number" name="transaction_id" placeholder="رقم العملية" required>
                     <i class="fas fa-hashtag"></i>

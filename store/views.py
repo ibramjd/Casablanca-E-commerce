@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 from .forms import CustomUserCreationForm
 
@@ -28,6 +29,11 @@ def store_view(request):
         elif price == 'high':
             products = products.filter(price__gte=25000)
 
+    # pagination
+    paginator = Paginator(products, 6)  # Show 6 products per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     if request.user.is_authenticated:
         customer, created = Customer.objects.get_or_create(
             user = request.user,
@@ -44,12 +50,13 @@ def store_view(request):
         }
 
     context = {
-        'products': products,
+        'products': page_obj,
         'items':items,
         'order':order,
         'category': category,
         'type_of_clothe': type_of_clothe,
         'price': price,
+        'page_obj': page_obj,
         }
     return render(request, 'store/store.html', context)
 
